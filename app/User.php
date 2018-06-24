@@ -14,10 +14,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table='users';
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','apellido','dni','turno','telefono','domicilio_id'
     ];
-
+    public function domicilio() {
+        return $this->belongsTo('App\Domicilio');
+      }
     /**
      * The attributes that should be hidden for arrays.
      *

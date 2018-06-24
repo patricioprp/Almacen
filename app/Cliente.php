@@ -10,7 +10,7 @@ class Cliente extends Model
     protected $fillable = ['nombre','apellido','estado','dni','telefono','domicilio_id'];
 
     public function domicilio() {
-        return $this->hasOne('App\Domicilio','id','domicilio_id');
+        return $this->belongsTo('App\Domicilio');
         //return $this->hasOne('App\Profile', 'clave_foranea', 'clave_local_a_relacionar');
       }
 }

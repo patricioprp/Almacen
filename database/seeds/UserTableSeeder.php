@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
 class UserTableSeeder extends Seeder
 {
     /**
@@ -11,12 +11,16 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 55 ; $i++) {
+        for ($i=1; $i < 16 ; $i++) {
             $u=new App\User();
-            $u->name='u'.$i;
-            $u->apellido='u'.$i;
+            $u->name = 'u'.$i;
+            $u->apellido = 'u.u'.$i;
             $u->email='u'.$i.'@a.com';
+            $u->turno= 'maniana';
             $u->password=bcrypt('123456');
+            $u->telefono=$i;
+            $u->dni=$i;
+            $u->domicilio_id=$i;
             $u->save();
         } //for ($i=0; $i < 5 ; $i++) {
         //generamos 1 usuario más
@@ -25,7 +29,11 @@ class UserTableSeeder extends Seeder
                     'name' => 'Patricio',
                     'apellido' => 'Polito',
                     'email' => 'patricioprp06@gmail.com',
-                    'password' => bcrypt('32460264')
+                    'turno' => 'maniana',
+                    'password' => bcrypt('32460264'),
+                    'telefono' => '3814',
+                    'dni' => '3246',
+                    'domicilio_id' => '1'
                 ]
         );
     }
