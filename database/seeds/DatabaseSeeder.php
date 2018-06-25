@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DomicilioTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(ClienteTableSeeder::class);
+        $this->call(Liquidacion::class);
+        $this->call(Concepto::class);
+        $this->call(DetalleLiquidacion::class);
     }
 }
