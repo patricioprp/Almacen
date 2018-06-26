@@ -21,6 +21,9 @@ class User extends Authenticatable
     public function domicilio() {
         return $this->belongsTo('App\Domicilio');
       }
+      public function liquidacion(){
+        return $this->hasOne('\App\Liquidacion');
+       }
     /**
      * The attributes that should be hidden for arrays.
      *
