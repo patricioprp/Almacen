@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Liquidacion::class);
         $this->call(Concepto::class);
         $this->call(DetalleLiquidacion::class);
+        $this->call(Proveedor::class);
+        $this->call(Compra::class);
     }
 }

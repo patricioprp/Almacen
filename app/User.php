@@ -14,11 +14,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table='users';
-    protected $fillable = [
+      protected $table='users';
+      protected $fillable = [
         'name', 'email', 'password','apellido','dni','turno','telefono','domicilio_id'
     ];
-    public function domicilio() {
+      public function domicilio() {
         return $this->belongsTo('App\Domicilio');
       }
       public function liquidacion(){
@@ -29,7 +29,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+        protected $hidden = [
         'password', 'remember_token',
     ];
 }

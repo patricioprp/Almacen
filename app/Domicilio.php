@@ -18,7 +18,10 @@ class Domicilio extends Model
       public function cliente(){
         return $this->hasOne('\App\Cliente');
        }
-       public function user(){
+      public function user(){
         return $this->hasOne('\App\User');
+       }
+       public function proveedor(){
+        return $this->hasOne('\App\Proveedor');
        }
 }
