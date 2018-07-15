@@ -12,4 +12,11 @@ class Compra extends Model
     public function proveedor(){
         return $this->belongsTo('\App\Proveedor');
       }
+    /*public function producto() {
+        return $this->belongsTo('App\Producto');
+      }*/
+    public function productos(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Producto'); 
+      }
 }

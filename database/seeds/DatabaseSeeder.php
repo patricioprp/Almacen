@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DetalleLiquidacion::class);
         $this->call(Proveedor::class);
         $this->call(Compra::class);
+        $this->call(Tipo_seeder::class);
+        $this->call(Stockseeder::class);
+        $this->call(Productoseeder::class);
+        $this->call(LineaCompraseeder::class);
     }
 }
