@@ -13,11 +13,12 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #ccc;
-                color: #008080;
+                background-color: #580e0e;
+                color: #ffff;
                 font-weight: 70;
-                height: 100vh;
+                height: 90vh;
                 margin: 0;
+                width :1350px;
             }
 
             .full-height {
@@ -49,7 +50,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ffff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -78,11 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <div class="jumbotron jumbotron-fluid">
-                        <div class="container">
-                          <h4 class="display-4">Tucuman Informatica</h4>
-                        </div>
-                      </div>
+                    <h4 class="display-4">Tucuman Informatica</h4>                       
                 </div>
                 <div class="row">
                         <div class="col-sm-12 col-md-4">
