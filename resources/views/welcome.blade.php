@@ -21,7 +21,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 90vh;
             }
 
             .flex-center {
@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 54px;
+                font-size: 34px;
             }
 
             .links > a {
@@ -81,7 +81,6 @@
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container">
                           <h4 class="display-4">Tucuman Informatica</h4>
-                          <hr class="my-4">
                         </div>
                       </div>
                 </div>
@@ -91,7 +90,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">NOTEBOOK-NETBOOK-PC</h5>
                                   <p class="card-text">LENOVO-SAMSUNG-TOSHIBA-SONY VAIO-MAC-ACER</p>
-                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/a_rattata.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="http://sodimac.scene7.com/is/image/SodimacPeru/2491877?$lista175$" class="img-thumbnail rounded-circle" alt=""></a>
             
                                 </div>
                               </div>    
@@ -101,7 +100,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">REPUESTOS Y ACCESORIOS</h5>
                                   <p class="card-text">NOGANET-KINGSTON-PC BOX-TP LINK-DLINK-CISCO</p>
-                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/munchlax_b.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="http://3.bp.blogspot.com/_7-gup3wtid0/SxVNEGsnj-I/AAAAAAAAABw/OHVpfdRR9hY/s200/tarjeta+lan.jpg" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                             </div>    
                         </div>
@@ -110,7 +109,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">CELULARES</h5>
                                   <p class="card-text">SAMSUNG-SONY-LG-ALCATEL-MOTOROLA-NOKIA-IPHONE</p>
-                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/snorlax.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="http://roycortina.com.ar/wp-content/uploads/2014/05/celulares--175x175.jpg" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                               </div>
                         </div>
