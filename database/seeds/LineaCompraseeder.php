@@ -13,7 +13,7 @@ class LineaCompraseeder extends Seeder
     {
         $faker = Faker::create();
         for ($i=1; $i < 16; $i++) {
-        \DB::table('linea_compras')->insert(array(
+        \DB::table('compra_producto')->insert(array(
            'producto_id' => $i,
            'compra_id' => $i,
            'created_at' => date('Y-m-d H:m:s'),

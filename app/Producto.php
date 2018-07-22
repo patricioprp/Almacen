@@ -17,6 +17,6 @@ class Producto extends Model
             return $this->belongsTo('\App\Stock');
         }
     public function compra(){
-          return $this->belongsTo('App\Compra');
+          return $this->belongsToMany('App\Compra');
         }
 }

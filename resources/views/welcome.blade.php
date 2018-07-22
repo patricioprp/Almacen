@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <title>Tucuman Informatico</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -13,10 +13,9 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
+                background-color: #ccc;
+                color: #008080;
+                font-weight: 70;
                 height: 100vh;
                 margin: 0;
             }
@@ -46,7 +45,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 54px;
             }
 
             .links > a {
@@ -79,16 +78,43 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                          <h4 class="display-4">Tucuman Informatica</h4>
+                          <hr class="my-4">
+                        </div>
+                      </div>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card mb-4 bg-danger text-white">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title">NOTEBOOK-NETBOOK-PC</h5>
+                                  <p class="card-text">LENOVO-SAMSUNG-TOSHIBA-SONY VAIO-MAC-ACER</p>
+                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/a_rattata.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+            
+                                </div>
+                              </div>    
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card mb-4 bg-primary text-white">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title">REPUESTOS Y ACCESORIOS</h5>
+                                  <p class="card-text">NOGANET-KINGSTON-PC BOX-TP LINK-DLINK-CISCO</p>
+                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/munchlax_b.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card mb-4 bg-warning text-white">
+                                <div class="card-body text-center">
+                                  <h5 class="card-title">CELULARES</h5>
+                                  <p class="card-text">SAMSUNG-SONY-LG-ALCATEL-MOTOROLA-NOKIA-IPHONE</p>
+                                  <a href="#"><img src="http://assets.pokemon.com/assets/cms2/img/video-games/_news/pokemon_sun_moon/snorlax.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </body>

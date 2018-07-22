@@ -13,7 +13,7 @@ class CrearTablaLineaCompra extends Migration
      */
     public function up()
     {
-        Schema::create('linea_compras', function (Blueprint $table) {
+        Schema::create('compra_producto', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('producto_id')->unsigned();
             $table->integer('compra_id')->unsigned();

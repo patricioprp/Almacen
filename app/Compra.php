@@ -17,6 +17,6 @@ class Compra extends Model
       }*/
     public function productos(){
         //relacion uno a muchos
-        return $this->hasMany('\App\Producto'); 
+        return $this->belongsToMany('\App\Producto'); 
       }
 }
