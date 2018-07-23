@@ -18,7 +18,7 @@
                 font-weight: 70;
                 height: 90vh;
                 margin: 0;
-                width :1350px;
+                font-family: serifa;
             }
 
             .full-height {
@@ -79,8 +79,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <h4 class="display-4">Tucuman Informatica</h4>                       
+                    <h4 class="display-4"><p>Tucuman Informatica</p></h4>                       
                 </div>
+                <div class="container-fluid">
                 <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="card mb-4 bg-danger text-white">
@@ -111,6 +112,7 @@
                               </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </body>
