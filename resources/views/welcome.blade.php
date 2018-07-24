@@ -11,58 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #580e0e;
-                color: #ffff;
-                font-weight: 70;
-                height: 90vh;
-                margin: 0;
-                font-family: serifa;
-            }
-
-            .full-height {
-                height: 90vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 34px;
-            }
-
-            .links > a {
-                color: #ffff;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -88,7 +37,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">NOTEBOOK-NETBOOK-PC</h5>
                                   <p class="card-text">LENOVO-SAMSUNG-TOSHIBA-SONY VAIO-MAC-ACER</p>
-                                  <a href="#"><img src="http://sodimac.scene7.com/is/image/SodimacPeru/2491877?$lista175$" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="{{ asset('images/notebook')}}" class="img-thumbnail rounded-circle" alt=""></a>
             
                                 </div>
                               </div>    
@@ -98,7 +47,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">REPUESTOS Y ACCESORIOS</h5>
                                   <p class="card-text">NOGANET-KINGSTON-PC BOX-TP LINK-DLINK-CISCO</p>
-                                  <a href="#"><img src="http://3.bp.blogspot.com/_7-gup3wtid0/SxVNEGsnj-I/AAAAAAAAABw/OHVpfdRR9hY/s200/tarjeta+lan.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="{{ asset('images/tarjeta')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                             </div>    
                         </div>
@@ -107,12 +56,13 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">CELULARES</h5>
                                   <p class="card-text">SAMSUNG-SONY-LG-ALCATEL-MOTOROLA-NOKIA-IPHONE</p>
-                                  <a href="#"><img src="http://roycortina.com.ar/wp-content/uploads/2014/05/celulares--175x175.jpg" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                               </div>
                         </div>
                     </div>
                 </div>
+                <div class="panel-footer text-center"><a href="{{asset('/')}}"><img src="{{asset('images/marca_tucuman.png')}}" srcset="{{asset('images/marca_tucuman.png')}} 2x" width="60"></a> Tucuman Tecnologias © {{date("Y")}} | Todos los derechos reservados </div>          
             </div>
         </div>
     </body>

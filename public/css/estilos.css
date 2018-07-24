@@ -1,0 +1,50 @@
+html, body {
+    background-color: #580e0e;
+    color: #ffff;
+    font-weight: 70;
+    height: 90vh;
+    margin: 0;
+    font-family: serifa;
+}
+
+.full-height {
+    height: 90vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 34px;
+}
+
+.links > a {
+    color: #ffff;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
