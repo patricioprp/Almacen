@@ -66,7 +66,7 @@
                             <div class="card-body text-center">
                               <h5 class="card-title">EMPLEADO</h5>
                               <p class="card-text"></p>
-                              <a href="#"><img src="{{ asset('images/notebook')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                              <a href="#"><img src="{{ asset('images/empleado')}}" class="img-thumbnail rounded-circle" alt=""></a>
         
                             </div>
                           </div>    
@@ -76,7 +76,7 @@
                             <div class="card-body text-center">
                               <h5 class="card-title">CLIENTE</h5>
                               <p class="card-text"></p>
-                              <a href="#"><img src="{{ asset('images/tarjeta')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                              <a href="#"><img src="{{ asset('images/cliente')}}" class="img-thumbnail rounded-circle" alt=""></a>
                             </div>
                         </div>    
                     </div>
@@ -85,7 +85,7 @@
                             <div class="card-body text-center">
                               <h5 class="card-title">PROVEEDOR</h5>
                               <p class="card-text"></p>
-                              <a href="#"><img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                              <a href="#"><img src="{{ asset('images/proveedor')}}" class="img-thumbnail rounded-circle" alt=""></a>
                             </div>
                           </div>
                     </div>
@@ -94,7 +94,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">PRODUCTOS</h5>
                                   <p class="card-text"></p>
-                                  <a href="#"><img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="#"><img src="{{ asset('images/productos')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                               </div>
                         </div>
@@ -103,7 +103,7 @@
                                     <div class="card-body text-center">
                                       <h5 class="card-title">VENTAS</h5>
                                       <p class="card-text"></p>
-                                      <a href="#"><img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                      <a href="#"><img src="{{ asset('images/venta')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                     </div>
                                   </div>
                             </div>
