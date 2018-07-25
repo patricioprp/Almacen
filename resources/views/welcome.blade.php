@@ -37,7 +37,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">NOTEBOOK-NETBOOK-PC</h5>
                                   <p class="card-text">LENOVO-SAMSUNG-TOSHIBA-SONY VAIO-MAC-ACER</p>
-                                  <a href="#"><img src="{{ asset('images/notebook')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <img src="{{ asset('images/notebook')}}" class="img-thumbnail rounded-circle" alt="">
             
                                 </div>
                               </div>    
@@ -47,7 +47,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">REPUESTOS Y ACCESORIOS</h5>
                                   <p class="card-text">NOGANET-KINGSTON-PC BOX-TP LINK-DLINK-CISCO</p>
-                                  <a href="#"><img src="{{ asset('images/tarjeta')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <img src="{{ asset('images/tarjeta')}}" class="img-thumbnail rounded-circle" alt="">
                                 </div>
                             </div>    
                         </div>
@@ -56,7 +56,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">CELULARES</h5>
                                   <p class="card-text">SAMSUNG-SONY-LG-ALCATEL-MOTOROLA-NOKIA-IPHONE</p>
-                                  <a href="#"><img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <img src="{{ asset('images/celulares')}}" class="img-thumbnail rounded-circle" alt="">
                                 </div>
                               </div>
                         </div>
