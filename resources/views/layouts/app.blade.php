@@ -9,11 +9,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>TUC-TECNO</title>
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{{ asset('css/estilos.css')}}"> 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:#580e0e;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -29,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Tucuman Tecnologias
+                        <b>Tucuman Tecnologias</b>
                     </a>
                 </div>
 
@@ -48,7 +55,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} {{ Auth::user()->apellido }}<span class="caret"></span>
+                                    <b>{{ Auth::user()->name }} {{ Auth::user()->apellido }}</b><span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -73,8 +80,6 @@
 
         @yield('content')
     </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+ <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

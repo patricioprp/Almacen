@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">BIENVENIDO</div>
 
-                <div class="panel-body">
+                <div class="panel-body panel">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

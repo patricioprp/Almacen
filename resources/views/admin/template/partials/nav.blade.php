@@ -7,7 +7,7 @@
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand img-responsive" rel="home" href="/"><img src="{{ asset('images/logo.png')}}" style="max-width:200px; margin-top: -7px; " ></a>
+     <a class="navbar-brand img-responsive" rel="home" href="/"><img src="{{ asset('images/img')}}" style="max-width:200px; margin-top: -7px; " ></a>
    </div>
    
        <!-- Brand and toggle get grouped for better mobile display -->
