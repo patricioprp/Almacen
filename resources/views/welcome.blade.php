@@ -28,7 +28,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <h4 class="display-4"><p>Tucuman Informatica</p></h4>                       
+                    <h4 class="display-4"><p>Tucuman Tecnologias</p></h4>                       
                 </div>
                 <div class="container-fluid">
                 <div class="row">
