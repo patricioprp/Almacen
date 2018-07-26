@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::resource('user','UserController');
+    });
+
 Route::resource('states','StateController');
 Route::get('provinces/{id}','StateController@getProvinces');
 Route::get('locations/{id}','ProvinceController@getLocations');
