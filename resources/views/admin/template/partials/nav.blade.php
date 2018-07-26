@@ -14,10 +14,10 @@
        <!-- Collect the nav links, forms, and other content for toggling -->
        <div class="collapse navbar-collapse navbar-ex1-collapse">
          <ul class="nav navbar-nav navbar-right">
-           <li class="@yield('empleado')"><a href="{{ asset('admin/empleado')}}"><b>Gestionar Consultor</b></a></li>
-           <li class="@yield('contrato')"><a href="{{ asset('admin/contrato')}}"><b>Gestionar Contrato</b></a></li>
-           <li class="@yield('reparticion')"><a href="{{ asset('admin/distribution')}}"><b>Gestionar Reparticion</b></a></li>
-           <li class="@yield('programa')"><a href="{{ asset('admin/programa')}}"><b>Gestionar Programa</b></a></li>
+           <li class="@yield('venta')"><a href="{{ asset('admin/empleado')}}"><b>Gestionar Venta</b></a></li>
+           <li class="@yield('producto')"><a href="{{ asset('admin/contrato')}}"><b>Gestionar Producto</b></a></li>
+           <li class="@yield('proveedor')"><a href="{{ asset('admin/distribution')}}"><b>Gestionar Proveedor</b></a></li>
+           <li class="@yield('cliente')"><a href="{{ asset('admin/programa')}}"><b>Gestionar Cliente</b></a></li>
            <li class="@yield('usuario')"><a href="{{ asset('admin/user')}}"><b>Gestion de Usuario</b></a></li>
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por... <span class="caret"></span></a>
