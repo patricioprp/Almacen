@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\State;
+use App\Province;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,9 +25,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $states = State::pluck('name','id');
+        return view('admin.user.create')->with('states',$states);
     }
 
+    public function getProvinces(Request $request,$id){
+        if($request->ajax()){
+            $provinces = Province::provinces($id);
+          return response()->json($provinces);
+        }
+       }
     /**
      * Store a newly created resource in storage.
      *

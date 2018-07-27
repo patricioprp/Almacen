@@ -28,7 +28,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js')}}"></script>
-    <script src="{{ asset('plugins/js/dropdown.js')}}"></script>
+    {!! Html::script('js/dropdown.js')!!}
      @yield('js')
     </body>
 </html>

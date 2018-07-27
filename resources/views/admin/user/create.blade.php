@@ -49,16 +49,19 @@
     <hr /><hr />
     <div class="row">
         <div class="col-lg-2">
-            
+            {!! Form::select('state',$states,null,['id' =>'state','placeholder'=>'Seleccione un Pais'])!!}
+        </div>
+        <div class="col-lg-2">
+            {!! Form::select('province',['placeholder'=>'Seleccion una Provincia'],null,['id'=>'province'])!!}
+        </div>
+        <div class="col-lg-2">
+            {!! Form::select('location',['placeholder'=>'Selecciona una Localidad'],null,['id'=>'location'])!!}
         </div>
     </div>
     <hr /><hr />
     <div class="row">
         <div class="col-lg-2">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
-        </div>
-        <div class="col-lg-2">
-           <a href="" class="btn btn-danger">Crear Domicilio</a>
         </div>
     </div>
 </div>
