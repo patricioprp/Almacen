@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\User;
 use App\State;
 use App\Province;
 use Illuminate\Http\Request;
@@ -15,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderBy('id','ASC')->paginate(7);
+        return view('admin.user.index')->with('users',$users);
     }
 
     /**
@@ -29,12 +32,6 @@ class UserController extends Controller
         return view('admin.user.create')->with('states',$states);
     }
 
-    public function getProvinces(Request $request,$id){
-        if($request->ajax()){
-            $provinces = Province::provinces($id);
-          return response()->json($provinces);
-        }
-       }
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +40,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+      //flash("Se creo el Usuario " . $user->name . " correctamente!")->success();
+        return redirect(route('user.index'));
     }
 
     /**

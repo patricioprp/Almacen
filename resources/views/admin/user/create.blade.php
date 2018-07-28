@@ -61,6 +61,27 @@
     <hr /><hr />
     <div class="row">
         <div class="col-lg-2">
+                {!! Form::label('calle','CALLE',['class'=>'control-label']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::text('calle',null,['class' => 'form-control', 'placeholder'=>'CALLE','required']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::label('numero','NUMERO',['class'=>'control-label']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::text('numero',null,['class' => 'form-control', 'placeholder'=>'NUMERO','required']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::label('barrio','BARRIO',['class'=>'control-label']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::text('barrio',null,['class' => 'form-control', 'placeholder'=>'BARRIO','required']) !!}
+        </div>
+    </div>
+    <hr /><hr />
+    <div class="row">
+        <div class="col-lg-2">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
         </div>
     </div>

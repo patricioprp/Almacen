@@ -19,6 +19,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('user','UserController');
     Route::get('user/provinces/{id}','StateController@getProvinces');
     Route::get('user/locations/{id}','ProvinceController@getLocations');
+    Route::get('user/{id}/destroy',[
+        'uses' => 'UserController@destroy',
+        'as' => 'admin.user.destroy'
+      ]);
     });
 
 Route::resource('states','StateController');
