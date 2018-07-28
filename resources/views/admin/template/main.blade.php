@@ -17,7 +17,8 @@
                     <strong>@yield('title', 'Tuc-tecno')</strong>
                 </div>
                   <div class="panel-body">
-
+                        @include('flash::message')<!--para que se muestren los mensajes con el paquete flash -->
+                        @include('admin.template.partials.errors')
                   @yield('content')
                   </div>
             </div>        

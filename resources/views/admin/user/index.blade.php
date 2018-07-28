@@ -2,7 +2,7 @@
 @section('title','Listado de  Empleados')
 @section('content')
 @section('usuario','active')
-<h3><b>Modulo de Gestion de Usuario</b></h3>
+<h3><b>Modulo de Gestion de Empleado</b></h3>
 <a href="{{ asset('admin/user/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 <div class="col-xs-12">
 <div class="table-responsive">

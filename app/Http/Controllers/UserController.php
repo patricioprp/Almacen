@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\State;
 use App\Province;
+use App\Domicilio;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,12 +40,22 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-    
+    {   
+        //Guardando el Domicilio del Usuario o Empleado
+        $domicilio = new Domicilio();
+        $domicilio->calle = $request->calle;
+        $domicilio->barrio = $request->barrio;
+        $domicilio->numero = $request->numero;
+        $domicilio->location_id = $request->location;
+        $domicilio->location->province_id = $request->province;
+        $domicilio->location->province->state_id= $request->state;
+        $domicilio->save();
+        //Guardando el usuario o empleado
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
+        $user->domicilio_id = $domicilio->id;
         $user->save();
-      //flash("Se creo el Usuario " . $user->name . " correctamente!")->success();
+        flash("Se creo el Usuario " . $user->name . " correctamente!")->important();
         return redirect(route('user.index'));
     }
 

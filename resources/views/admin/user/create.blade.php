@@ -48,14 +48,20 @@
     </div>
     <hr /><hr />
     <div class="row">
+            <div class="col-lg-2">
+                    {!! Form::label('email','CORREO',['class'=>'control-label']) !!}
+                 </div>
+                    <div class="col-lg-2">
+                       {!! Form::text('email',null,['class' => 'form-control', 'placeholder'=>'Correo','required']) !!}
+                    </div>
         <div class="col-lg-2">
-            {!! Form::select('state',$states,null,['id' =>'state','placeholder'=>'Seleccione un Pais'])!!}
+            {!! Form::select('state',$states,null,['class'=>'form-control','id' =>'state','placeholder'=>'Seleccione un Pais'])!!}
         </div>
         <div class="col-lg-2">
-            {!! Form::select('province',['placeholder'=>'Seleccion una Provincia'],null,['id'=>'province'])!!}
+            {!! Form::select('province',['placeholder'=>'Seleccion una Provincia'],null,['class'=>'form-control select-provincia','id'=>'province'])!!}
         </div>
         <div class="col-lg-2">
-            {!! Form::select('location',['placeholder'=>'Selecciona una Localidad'],null,['id'=>'location'])!!}
+            {!! Form::select('location',['placeholder'=>'Selecciona una Localidad'],null,['class'=>'form-control','id'=>'location'])!!}
         </div>
     </div>
     <hr /><hr />
