@@ -1,6 +1,6 @@
 
 $("#state").change(function(event){
-    $.get("provinces/"+event.target.value+"",function(response, state){
+    $.get("/provinces/"+event.target.value+"",function(response, state){
       $("#province").empty();
       for(i=0;i<response.length;i++){
       $("#province").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
@@ -8,7 +8,7 @@ $("#state").change(function(event){
     });
     });
     $("#province").change(function(event){
-      $.get("locations/"+event.target.value+"",function(response, province){
+      $.get("/locations/"+event.target.value+"",function(response, province){
         $("#location").empty();
         for(i=0;i<response.length;i++){
         $("#location").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
@@ -16,4 +16,20 @@ $("#state").change(function(event){
       });
       });
 
+      $("#stateb").change(function(event){
+        $.get("/admin/user/user/provinces/"+event.target.value+"",function(response, state){
+          $("#provinceb").empty();
+          for(i=0;i<response.length;i++){
+          $("#provinceb").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+          }
+        });
+        });
+        $("#provinceb").change(function(event){
+          $.get("/admin/user/user/locations/"+event.target.value+"",function(response, province){
+            $("#locationb").empty();
+            for(i=0;i<response.length;i++){
+            $("#locationb").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+            }
+          });
+          });
       

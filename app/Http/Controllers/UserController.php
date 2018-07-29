@@ -107,6 +107,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $user=User::find($id);
+            $user->forceDelete();
+           flash("Se elimino el Usuario  " . $user->name . " correctamente!")->error();
+            return redirect(route('user.index'));
+        }
     }
 }
