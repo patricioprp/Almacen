@@ -7,6 +7,7 @@ use App\User;
 use App\State;
 use App\Province;
 use App\Domicilio;
+use App\Location;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -78,7 +79,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+        $states = State::pluck('name','id');
+        $provinces = Province::pluck('name','id');
+        $locations = Location::pluck('name','id');
+        return view('admin.user.edit')->with('user',$user)
+        ->with('states',$states)->with('provinces',$provinces)->with('locations',$locations);
     }
 
     /**

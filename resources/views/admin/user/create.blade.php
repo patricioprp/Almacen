@@ -25,7 +25,7 @@
           {!! Form::text('dni',null,['class' => 'form-control', 'placeholder'=>'Dni','required']) !!}
          </div> 
     </div>
-    <hr /><hr />
+    <hr />
     <div class="row">
       <div class="col-lg-2">
         {!! Form::label('turno','TURNO',['class'=>'control-label']) !!}
@@ -46,14 +46,14 @@
                     {!! Form::password('password',['class' => 'form-control', 'placeholder'=>'****************','required']) !!}
              </div>
     </div>
-    <hr /><hr />
+    <hr />
     <div class="row">
-            <div class="col-lg-2">
-                    {!! Form::label('email','CORREO',['class'=>'control-label']) !!}
-                 </div>
-                    <div class="col-lg-2">
-                       {!! Form::text('email',null,['class' => 'form-control', 'placeholder'=>'Correo','required']) !!}
-                    </div>
+        <div class="col-lg-2">
+           {!! Form::label('email','CORREO',['class'=>'control-label']) !!}
+        </div>
+        <div class="col-lg-2">
+           {!! Form::text('email',null,['class' => 'form-control', 'placeholder'=>'Correo','required']) !!}
+        </div>
         <div class="col-lg-2">
             {!! Form::select('state',$states,null,['class'=>'form-control','id' =>'state','placeholder'=>'Seleccione un Pais'])!!}
         </div>
@@ -64,7 +64,7 @@
             {!! Form::select('location',['placeholder'=>'Selecciona una Localidad'],null,['class'=>'form-control','id'=>'location'])!!}
         </div>
     </div>
-    <hr /><hr />
+    <hr />
     <div class="row">
         <div class="col-lg-2">
                 {!! Form::label('calle','CALLE',['class'=>'control-label']) !!}
