@@ -24,6 +24,11 @@ class User extends Authenticatable
       public function liquidacion(){
         return $this->hasOne('\App\Liquidacion');
        }
+
+       public function ventas(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Ventas'); 
+      }
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Stockseeder::class);
         $this->call(Productoseeder::class);
         $this->call(LineaCompraseeder::class);
+        $this->call(Ventaseeder::class);
     }
 }

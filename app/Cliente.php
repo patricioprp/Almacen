@@ -13,4 +13,8 @@ class Cliente extends Model
         return $this->belongsTo('App\Domicilio');
         //return $this->hasOne('App\Profile', 'clave_foranea', 'clave_local_a_relacionar');
       }
+      public function ventas(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Venta'); 
+      }
 }
