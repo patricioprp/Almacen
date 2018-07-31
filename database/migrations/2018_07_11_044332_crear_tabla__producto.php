@@ -21,8 +21,8 @@ class CrearTablaProducto extends Migration
             $table->integer('tipo_id')->unsigned();
             $table->integer('stock_id')->unsigned();
 
-            $table->foreign('tipo_id')->references('id')->on('tipos');
-            $table->foreign('stock_id')->references('id')->on('stocks');
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
+            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -18,8 +18,8 @@ class CrearTablaLineaCompra extends Migration
             $table->integer('producto_id')->unsigned();
             $table->integer('compra_id')->unsigned();
 
-            $table->foreign('producto_id')->references('id')->on('tipos');
-            $table->foreign('compra_id')->references('id')->on('compras');
+            $table->foreign('producto_id')->references('id')->on('tipos')->onDelete('cascade');
+            $table->foreign('compra_id')->references('id')->on('compras')->onDelete('cascade');
             $table->timestamps();
         });
     }

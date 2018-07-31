@@ -95,8 +95,20 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $user=User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        $domicilio = Domicilio::find($request->domicilio);
+        $domicilio->calle = $request->calle;
+        $domicilio->barrio = $request->barrio;
+        $domicilio->numero = $request->numero;
+        $domicilio->location_id = $request->location;
+        $domicilio->location->province_id = $request->province;
+        $domicilio->location->province->state_id= $request->state;
+        $domicilio->save();
+        flash("Se actualizo el Usuario  " . $user->name . " correctamente!")->warning();
+        return redirect(route('user.index'));
     }
 
     /**

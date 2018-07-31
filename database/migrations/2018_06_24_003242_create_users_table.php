@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('turno');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->integer('dni');
             $table->integer('domicilio_id')->unsigned();
             $table->foreign('domicilio_id')->references('id')->on('domicilios');

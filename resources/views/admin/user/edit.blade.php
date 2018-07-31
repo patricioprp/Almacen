@@ -10,6 +10,7 @@
     </div>
     <div class="col-lg-2">
             {!! Form::text('name',$user->name,['class' => 'form-control', 'placeholder'=>'Nombre','required']) !!}
+            {!! Form::text('domicilio',$user->domicilio_id,['class' => 'form-control hidden', 'placeholder'=>'Nombre','required']) !!}
     </div>
     <div class="col-lg-2">
             {!! Form::label('apellido','APELLIDO',['class'=>'control-label']) !!}
@@ -85,5 +86,8 @@
                 {!! Form::text('barrio',$user->domicilio->barrio,['class' => 'form-control', 'placeholder'=>'barrio','required']) !!}
         </div>
 </div>
+<div class="form-group">
+                {!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}
+              </div>
 {!! Form::close() !!}
 @endsection

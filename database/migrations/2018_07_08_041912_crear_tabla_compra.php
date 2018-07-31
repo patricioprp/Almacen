@@ -18,9 +18,9 @@ class CrearTablaCompra extends Migration
             $table->date('fecha');
             $table->double('monto',8,2);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('proveedor_id')->unsigned();
-            $table->foreign('proveedor_id')->references('id')->on('proveedors');
+            $table->foreign('proveedor_id')->references('id')->on('proveedors')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ $("#state").change(function(event){
       });
 
       $("#stateb").change(function(event){
-        $.get("/admin/user/user/provinces/"+event.target.value+"",function(response, state){
+        $.get("/admin/user_id/user/provinces/"+event.target.value+"",function(response, state){
           $("#provinceb").empty();
           for(i=0;i<response.length;i++){
           $("#provinceb").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
@@ -25,7 +25,7 @@ $("#state").change(function(event){
         });
         });
         $("#provinceb").change(function(event){
-          $.get("/admin/user/user/locations/"+event.target.value+"",function(response, province){
+          $.get("/admin/user_id/user/locations/"+event.target.value+"",function(response, province){
             $("#locationb").empty();
             for(i=0;i<response.length;i++){
             $("#locationb").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
