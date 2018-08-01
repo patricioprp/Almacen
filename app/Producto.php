@@ -19,4 +19,7 @@ class Producto extends Model
     public function compra(){
           return $this->belongsToMany('App\Compra');
         }
+        public function lineaVenta(){
+          return $this->hasOne('\App\Linea_venta');
+         }
 }

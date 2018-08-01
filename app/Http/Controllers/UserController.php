@@ -8,6 +8,7 @@ use App\State;
 use App\Province;
 use App\Domicilio;
 use App\Location;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,9 +18,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::orderBy('id','ASC')->paginate(7);
+        $users = User::search($request->apellido)->orderBy('id','ASC')->paginate(7);
         return view('admin.user.index')->with('users',$users);
     }
 

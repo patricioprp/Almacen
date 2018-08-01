@@ -17,4 +17,7 @@ class Cliente extends Model
         //relacion uno a muchos
         return $this->hasMany('\App\Venta'); 
       }
+      public function cuenta_corriente(){
+        return $this->hasOne('\App\Cuenta_corriente');
+       }
 }

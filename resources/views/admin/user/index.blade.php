@@ -4,6 +4,19 @@
 @section('usuario','active')
 <h3><b>Modulo de Gestion de Empleado</b></h3>
 <a href="{{ asset('admin/user/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+   {{-- Buscador de empleado --}}
+   {!! Form::open(['route' => 'user.index', 'method' => 'GET', 'autocomplete' => 'off',
+   'class' => 'navbar-form pull-right', 'id' => 'formSearch']) !!}
+   <div class="input-group">
+       {!! Form::text('apellido', null, ['class' => 'form-control', 'placeholder' => 'Buscar']) !!}
+
+       <div class="input-group-btn">
+           <button type="submit" form="formSearch" class="btn btn-default">
+               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+           </button>
+       </div>
+   </div>
+{!! Form::close() !!}
 <div class="col-xs-12">
 <div class="table-responsive">
   <table class="table table-bordered table-condensed table-striped table-responsive table-hover">

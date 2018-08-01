@@ -29,6 +29,10 @@ class User extends Authenticatable
         //relacion uno a muchos
         return $this->hasMany('\App\Ventas'); 
       }
+
+      public function scopeSearch($query, $apellido ){
+        return $query->where('apellido', 'LIKE', "%$apellido%");
+     }
     /**
      * The attributes that should be hidden for arrays.
      *
