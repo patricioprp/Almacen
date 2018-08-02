@@ -19,7 +19,13 @@ class Venta extends Model
     public function lineaVentas(){
         return $this->hasMany('\App\Linea_venta');
       }
-      public function cuentasCorrientes(){
+    public function cuentasCorrientes(){
         return $this->hasMany('\App\Cuenta_corriente');
       }
+    public function pago() {
+        return $this->belongsTo('App\Pago');
+      }
+      public function pago_cc(){
+        return $this->hasMany('\App\Pago_cc');
+      } 
 }

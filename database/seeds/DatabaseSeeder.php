@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LineaCompraseeder::class);
         $this->call(Ventaseeder::class);
         $this->call(cuenta_corrienteseeder::class);
+        $this->call(Pagoseeder::class);
+        $this->call(Pago_ccseeder::class);
     }
 }
