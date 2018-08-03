@@ -15,4 +15,8 @@ class Cuenta_corriente extends Model
     public function cliente() {
         return $this->belongsTo('App\Cliente');
       }
+      public function pago_ccs()
+      {
+        return $this->belongsToMany('App\Pago_cc');
+      }
 }

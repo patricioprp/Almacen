@@ -15,4 +15,8 @@ class Pago_cc extends Model
     public function linea_pago(){
         return $this->belongsTo('\App\Venta');
     }
+    public function cuenta_corrientes()
+    {
+      return $this->belongsToMany('App\Cuenta_corriente');
+    }
 }
