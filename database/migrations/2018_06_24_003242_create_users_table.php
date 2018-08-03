@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->bigInteger('telefono');
-            $table->integer('dni');
+            $table->bigInteger('dni');
             $table->integer('domicilio_id')->unsigned();
             $table->foreign('domicilio_id')->references('id')->on('domicilios');
             $table->rememberToken();

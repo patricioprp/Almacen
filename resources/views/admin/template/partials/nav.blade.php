@@ -17,7 +17,7 @@
            <li class="@yield('venta')"><a href="{{ asset('admin/empleado')}}"><b>Gestionar Venta</b></a></li>
            <li class="@yield('producto')"><a href="{{ asset('admin/contrato')}}"><b>Gestionar Producto</b></a></li>
            <li class="@yield('proveedor')"><a href="{{ asset('admin/distribution')}}"><b>Gestionar Proveedor</b></a></li>
-           <li class="@yield('cliente')"><a href="{{ asset('admin/programa')}}"><b>Gestionar Cliente</b></a></li>
+           <li class="@yield('cliente')"><a href="{{ asset('admin/cliente')}}"><b>Gestionar Cliente</b></a></li>
            <li class="@yield('usuario')"><a href="{{ asset('admin/user')}}"><b>Gestion de Empleado</b></a></li>
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por... <span class="caret"></span></a>

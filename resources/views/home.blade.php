@@ -76,7 +76,7 @@
                             <div class="card-body text-center">
                               <h5 class="card-title">CLIENTE</h5>
                               <p class="card-text"></p>
-                              <a href="#"><img src="{{ asset('images/cliente')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                              <a href="{{ asset('admin/cliente')}}"><img src="{{ asset('images/cliente')}}" class="img-thumbnail rounded-circle" alt=""></a>
                             </div>
                         </div>    
                     </div>

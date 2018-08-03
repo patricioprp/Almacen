@@ -27,6 +27,17 @@ Route::group(['prefix' => 'admin'], function(){
       ]);
     });
 
+    Route::group(['prefix' => 'admin'], function(){
+        Route::resource('cliente','ClienteController');
+        Route::get('cliente/provinces/{id}','StateController@getProvinces');
+        Route::get('cliente/locations/{id}','ProvinceController@getLocations');
+        Route::get('cliente/cliente_id/provinces/{id}','StateController@getProvinces');
+        Route::get('cliente/cliente_id/locations/{id}','ProvinceController@getLocations');
+        Route::get('cliente/{id}/destroy',[
+            'uses' => 'ClienteController@destroy',
+            'as' => 'admin.cliente.destroy'
+          ]);
+        });
 Route::resource('states','StateController');
 Route::get('provinces/{id}','StateController@getProvinces');
 Route::get('locations/{id}','ProvinceController@getLocations');

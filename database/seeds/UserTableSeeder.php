@@ -36,5 +36,17 @@ class UserTableSeeder extends Seeder
                     'domicilio_id' => '1'
                 ]
         );
+        App\User::create(
+            [
+                'name' => 'Lucas',
+                'apellido' => 'Arcas',
+                'email' => 'lukasarcas@gmail.com',
+                'turno' => 'maniana',
+                'password' => bcrypt('lucasarcas'),
+                'telefono' => '3814',
+                'dni' => '3246',
+                'domicilio_id' => '1'
+            ]
+    );
     }
 }
