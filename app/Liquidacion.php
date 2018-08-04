@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Liquidacion extends Model
 {
     protected $table = 'liquidacions';
-    protected $fillable = ['sueldoNeto','periodo','desde','hasta','estado','user_id'];
+    protected $fillable = ['sueldoBruto','sueldoNeto','periodo','desde','hasta','estado','user_id'];
     
     public function detalleLiquidacion(){
         //relacion uno a muchos

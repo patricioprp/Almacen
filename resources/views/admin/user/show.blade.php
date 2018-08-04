@@ -4,10 +4,35 @@
 @section('usuario','active')
 <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  |  Periodo:{{$user->liquidacion->periodo}} | Sueldo Neto: {{$user->liquidacion->sueldoNeto}} </h2></p></h3></div>
+        <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3></div>
         <div class="panel-body">
-          <h3><p>Desde: {{\Carbon\Carbon::parse($user->liquidacion->desde)->format('d-m-Y')}}</p></h3>
-          <h3><p><p>Hasta: {{\Carbon\Carbon::parse($user->liquidacion->hasta)->format('d-m-Y')}}</p></p></h3>
-        </div>
+                <div class="col-xs-12">
+                        <div class="table-responsive">
+                          <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
+                            <thead>
+                              <th>SUELDO NETO</th>
+                              <th>SUELDO BRUTO</th>
+                              <th>PERIODO</th>
+                              <th>ESTADO</th>
+                              <th>DESDE</th>
+                              <th>HASTA</th>
+                            </thead>
+                            <tbody>
+                        @foreach ($user->liquidacions as $liq)
+                                 <tr>
+                                <td>${{$liq->sueldoNeto}}</td>
+                                <td>{{$liq->sueldoBruto}}</td>
+                                <td>{{$liq->periodo}}</td>
+                                <td>{{$liq->estado}}</td>
+                                <td>{{\Carbon\Carbon::parse($liq->desde)->format('d-m-Y')}}</td>
+                                <td>{{\Carbon\Carbon::parse($liq->hasta)->format('d-m-Y')}}</td>
+                                 </tr>
+                              @endforeach
+                        
+                            </tbody>
+                          </table>
+                          </div>
+                          </div>          
+                      </div>
         
 @endsection

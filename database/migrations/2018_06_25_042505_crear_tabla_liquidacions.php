@@ -16,10 +16,11 @@ class CrearTablaLiquidacions extends Migration
         Schema::create('liquidacions', function (Blueprint $table) {
             $table->increments('id');
             $table->double('sueldoNeto',8,2);
+            $table->double('sueldoBruto',8,2);
             $table->string('periodo');
             $table->date('desde');
             $table->date('hasta');
-            $table->string('estado');
+            $table->enum('estado',['liquidado','pendiente'])->default('pendiente');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -16,10 +16,11 @@ class Liquidacion extends Seeder
         for ($i=1; $i < 16; $i++) {
             \DB::table('liquidacions')->insert(array(
                    'sueldoNeto' => $i.$i,
+                   'sueldoBruto' => $i.$i,
                    'periodo' => $faker->firstNameFemale,
                    'desde' => date('Y-m-d'),
                    'hasta' => date('Y-m-d'),
-                   'estado' => 'u'.$i,
+                   'estado'  => $faker->randomElement(['liquidado','pendiente']),
                    'user_id' => $i,
                    'created_at' => date('Y-m-d H:m:s'),
                    'updated_at' => date('Y-m-d H:m:s')
