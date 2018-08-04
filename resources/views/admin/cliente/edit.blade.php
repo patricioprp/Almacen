@@ -32,7 +32,10 @@
         </div>
         <div class="col-lg-2">
                 {!! Form::text('telefono',$cliente->telefono,['class' => 'form-control', 'placeholder'=>'Nombre','required']) !!}
-</div>
+       </div>
+       <div class="col-lg-2">
+                {!! Form::select('estado',['' => 'Seleccione un Estado', 'activo'=>'activo','deudor'=>'deudor'],$cliente->estado,['class'=>'form-control']) !!}
+       </div>
 </div>
 <hr />
 <div class="row">

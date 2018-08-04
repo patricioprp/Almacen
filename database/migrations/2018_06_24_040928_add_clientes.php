@@ -18,7 +18,7 @@ class AddClientes extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->bigInteger('dni');
-            $table->enum('estado',['deudor','activo']);
+            $table->enum('estado',['deudor','activo'])->default('activo');
             $table->bigInteger('telefono');
             $table->integer('domicilio_id')->unsigned();
             $table->foreign('domicilio_id')->references('id')->on('domicilios');
