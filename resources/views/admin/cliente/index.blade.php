@@ -42,7 +42,11 @@
            <td>{{$cliente->nombre}}</td>
            <td>{{$cliente->apellido}}</td>
            <td>{{$cliente->dni}}</td>
-           <td>{{$cliente->estado}}</td>
+            @if($cliente->estado == "activo")
+              <td><span class="label label-success">{{$cliente->estado}}</td></span>
+           @else
+             <td><span class="label label-danger">{{$cliente->estado}}</td></span>
+           @endif</td>
            <td>{{$cliente->telefono}}</td>
            <td>{{$cliente->domicilio->location->province->state->name}}</td>
            <td>{{$cliente->domicilio->location->province->name}}</td>

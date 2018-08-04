@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin'], function(){
         'uses' => 'UserController@destroy',
         'as' => 'admin.user.destroy'
       ]);
+    Route::get('user/show/{id}', [
+        'uses' => 'UserController@show',
+        'as' => 'admin.user.show'
+      ]);
     });
 
     Route::group(['prefix' => 'admin'], function(){

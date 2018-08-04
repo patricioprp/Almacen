@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Cliente;
 use App\State;
+use App\Province;
+use App\Location;
 use App\Domicilio;
 use Illuminate\Http\Request;
 
@@ -74,7 +76,12 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente=Cliente::find($id);
+        $states = State::pluck('name','id');
+        $provinces = Province::pluck('name','id');
+        $locations = Location::pluck('name','id');
+        return view('admin.cliente.edit')->with('cliente',$cliente)
+        ->with('states',$states)->with('provinces',$provinces)->with('locations',$locations);
     }
 
     /**
@@ -86,7 +93,19 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente=Cliente::find($id);
+        $cliente->fill($request->all());
+        $cliente->save();
+        $domicilio = Domicilio::find($request->domicilio);
+        $domicilio->calle = $request->calle;
+        $domicilio->barrio = $request->barrio;
+        $domicilio->numero = $request->numero;
+        $domicilio->location_id = $request->location;
+        $domicilio->location->province_id = $request->province;
+        $domicilio->location->province->state_id= $request->state;
+        $domicilio->save();
+        flash("Se actualizo el Cliente  " . $cliente->nombre . " correctamente!")->warning();
+        return redirect(route('cliente.index'));
     }
 
     /**
@@ -97,6 +116,11 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $cliente=Cliente::find($id);
+            $cliente->forceDelete();
+           flash("Se elimino el Cliente " . $cliente->nombre . " correctamente!")->error();
+            return redirect(route('cliente.index'));
+        }
     }
 }
