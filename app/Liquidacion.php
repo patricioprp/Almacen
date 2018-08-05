@@ -16,4 +16,7 @@ class Liquidacion extends Model
       public function user() {
         return $this->belongsTo('App\User');
       }
+      public function scopeSearch($query, $periodo ){
+        return $query->where('periodo', 'LIKE', "%$periodo%");
+     }
 }

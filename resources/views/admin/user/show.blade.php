@@ -16,17 +16,19 @@
                               <th>ESTADO</th>
                               <th>DESDE</th>
                               <th>HASTA</th>
+                              <th>ACCION</th>
                             </thead>
-                            <tbody>
+                            <tbxdy>
                         @foreach ($user->liquidacions as $liq)
                                  <tr>
                                 <td>${{$liq->sueldoNeto}}</td>
-                                <td>{{$liq->sueldoBruto}}</td>
+                                <td>${{$liq->sueldoBruto}}</td>
                                 <td>{{$liq->periodo}}</td>
                                 <td>{{$liq->estado}}</td>
                                 <td>{{\Carbon\Carbon::parse($liq->desde)->format('d-m-Y')}}</td>
                                 <td>{{\Carbon\Carbon::parse($liq->hasta)->format('d-m-Y')}}</td>
-                                 </tr>
+                                <td><a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+                             </tr>
                               @endforeach
                         
                             </tbody>

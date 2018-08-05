@@ -8,6 +8,7 @@ use App\State;
 use App\Province;
 use App\Domicilio;
 use App\Location;
+use App\Detalleliquidacion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $users = User::search($request->apellido)->orderBy('id','ASC')->paginate(7);
+        $users = User::orderBy('id','ASC')->paginate(7);
         return view('admin.user.index')->with('users',$users);
     }
 
@@ -72,7 +73,11 @@ class UserController extends Controller
         $user = User::find($id);
         return view('admin.user.show')->with('user',$user);
     }
-
+    public function view($id)
+    {
+        $dliq = Detalleliquidacion::find($id);
+        return view('admin.user.view')->with('dliq',$dliq);
+    }
     /**
      * Show the form for editing the specified resource.
      *
