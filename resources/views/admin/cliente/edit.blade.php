@@ -41,13 +41,13 @@
 <div class="row">
 
         <div class="col-lg-2">
-                {!! Form::select('state',$states,$cliente->domicilio->location->province->state->id,['class' => 'form-control','id'=>'state']) !!}    
+                {!! Form::select('state',$states,$cliente->domicilio->location->province->state->id,['class' => 'form-control','id'=>'stateb']) !!}    
         </div>
         <div class="col-lg-2">
-                {!! Form::select('province',$provinces,$cliente->domicilio->location->province->id,['class' => 'form-control','id'=>'province']) !!}
+                {!! Form::select('province',$provinces,$cliente->domicilio->location->province->id,['class' => 'form-control','id'=>'provinceb']) !!}
             </div>
             <div class="col-lg-2">
-                    {!! Form::select('location',$locations,$cliente->domicilio->location->id,['class' => 'form-control','id'=>'location']) !!}
+                    {!! Form::select('location',$locations,$cliente->domicilio->location->id,['class' => 'form-control','id'=>'locationb']) !!}
             </div>
 </div>
 <hr />
