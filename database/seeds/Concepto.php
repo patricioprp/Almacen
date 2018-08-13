@@ -16,9 +16,8 @@ class Concepto extends Seeder
         for ($i=1; $i < 16; $i++) {
             \DB::table('conceptos')->insert(array(
                    'descripcion' => $faker->firstNameFemale,
-                   'tipo' => $faker->firstNameFemale,
-                   'montoFijo' => $i.$i,
-                   'montoVariable' => $i.$i,
+                   'tipo'  => $faker->randomElement(['haberes','deducciones']),
+                   'unidad' => $i,
                    'created_at' => date('Y-m-d H:m:s'),
                    'updated_at' => date('Y-m-d H:m:s')
             ));

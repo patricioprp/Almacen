@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin'], function(){
           'uses' => 'ClienteController@destroy',
           'as' => 'admin.cliente.destroy'
         ]);
+    Route::resource('liquidacion','LiquidacionController');
     });
 
 Route::resource('states','StateController');

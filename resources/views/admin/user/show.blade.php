@@ -4,7 +4,9 @@
 @section('usuario','active')
 <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3></div>
+        <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3>
+          <a href="{{ asset('admin/liquidacion/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        </div>
         <div class="panel-body">
                 <div class="col-xs-12">
                         <div class="table-responsive">

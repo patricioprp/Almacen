@@ -16,7 +16,6 @@ class DetalleLiquidacion extends Seeder
         for ($i=1; $i < 16; $i++) {
             \DB::table('detalle_liquidacions')->insert(array(
                    'monto' => $i.$i,
-                   'descuento' => $i.$i,
                    'subtotal' => $i.$i,
                    'liquidacion_id' => $i,
                    'concepto_id' => $i,

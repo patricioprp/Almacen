@@ -16,7 +16,6 @@ class CrearTablaDetalleLiquidacions extends Migration
         Schema::create('detalle_liquidacions', function (Blueprint $table) {
             $table->increments('id');
             $table->double('monto',8,2);
-            $table->double('descuento',8,2);
             $table->double('subtotal',8,2);
             $table->integer('liquidacion_id')->unsigned();
             $table->integer('concepto_id')->unsigned();

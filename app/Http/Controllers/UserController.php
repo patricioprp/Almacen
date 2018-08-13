@@ -8,7 +8,7 @@ use App\State;
 use App\Province;
 use App\Domicilio;
 use App\Location;
-use App\Liquidation;
+use App\Liquidacion;
 use App\Detalleliquidacion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -75,7 +75,7 @@ class UserController extends Controller
     }
     public function view($id)
     {
-        $dliq = Detalleliquidacion::find($id);
+        $dliq = Liquidacion::find($id);
         return view('admin.user.view')->with('dliq',$dliq);
     }
     /**

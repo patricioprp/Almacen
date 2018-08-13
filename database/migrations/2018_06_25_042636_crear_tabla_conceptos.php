@@ -16,9 +16,8 @@ class CrearTablaConceptos extends Migration
         Schema::create('conceptos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
-            $table->string('tipo');
-            $table->double('montoFijo',8,2);
-            $table->double('montoVariable',8,2);
+            $table->enum('tipo',['haberes','deducciones'])->default('haberes');
+            $table->integer('unidad');
             $table->timestamps();
         });
     }
