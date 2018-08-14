@@ -26,6 +26,21 @@
                         {!! Form::select('estado',['' => 'Seleccione un Estado', 'liquidado'=>'liquidado','pendiente'=>'pendiente'],null,['class'=>'form-control select-estado']) !!}
                         </div>
     </div>
+    <hr/ >
+    <div class="row">
+        <div class="col-lg-2">
+          {!! Form::label('desde','Desde',['class'=>'control-label']) !!}   
+        </div>
+        <div class="col-lg-2">
+           {!! Form::text('desde',null,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+        </div>
+        <div class="col-lg-2">
+                {!! Form::label('hasta','Hasta',['class'=>'control-label']) !!}   
+              </div>
+              <div class="col-lg-2">
+                 {!! Form::text('hasta',null,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+              </div>
+    </div>
     <div class="row">
             <div class="col-lg-2">
                     {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}

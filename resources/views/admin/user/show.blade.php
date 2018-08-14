@@ -5,8 +5,7 @@
 <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3>
-          <a href="{{ asset('admin/liquidacion/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        </div>
+       </div>
         <div class="panel-body">
                 <div class="col-xs-12">
                         <div class="table-responsive">
@@ -29,7 +28,9 @@
                                 <td>{{$liq->estado}}</td>
                                 <td>{{\Carbon\Carbon::parse($liq->desde)->format('d-m-Y')}}</td>
                                 <td>{{\Carbon\Carbon::parse($liq->hasta)->format('d-m-Y')}}</td>
-                                <td><a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+                                <td><a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                  <a href="{{ asset('admin/liquidacion/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                </td>
                              </tr>
                               @endforeach
                         

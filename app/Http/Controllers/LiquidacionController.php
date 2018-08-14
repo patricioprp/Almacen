@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Concepto;
 use App\User;
+use App\Liquidacion;
 
 class LiquidacionController extends Controller
 {
@@ -38,7 +39,16 @@ class LiquidacionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //dd($request);
+        $liquidacion = new Liquidacion($request->all());
+        $liquidacion->desde= \Carbon\Carbon::parse($liquidacion->desde)->format('Y-m-d');
+        $liquidacion->hasta= \Carbon\Carbon::parse($liquidacion->hasta)->format('Y-m-d');
+        $liquidacion->sueldoBruto=0;
+        $liquidacion->sueldoNeto=0;
+        $user = User::find($request->user);
+        $user->liquidacions()->save($liquidacion);
+        flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
+        return redirect(route('user.index'));
     }
 
     /**
