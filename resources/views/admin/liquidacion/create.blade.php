@@ -5,12 +5,24 @@
 {!! Form::open(['route' => 'liquidacion.store','method'=>'POST']) !!}
 <div class="form-group">
     <div class="row">
+            <div class="col-lg-2">
+                    <h3>{!! Form::label('empleado','Empleado:',['class'=>'col-lg-1 control-label']) !!}</h3>
+            </div>
         <div class="col-lg-2">
-            {!! Form::label('user','Empleado',['class'=>'col-lg-1 control-label']) !!} 
+                <h3>{!! Form::label('user',$liquidacion->user->name,['class'=>'col-lg-1 control-label']) !!}</h3>
         </div>
         <div class="col-lg-2">
-           {!! Form::select('user',$users,null,['class' => 'form-control select-user','multiple','required']) !!}
+                        {!! Form::text('id',$liquidacion->user->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                     </div>
+        <div class="col-lg-2">
+                <h3>{!! Form::label('apellido',$liquidacion->user->apellido,['class'=>'col-lg-1 control-label']) !!}</h3>
         </div>
+        <div class="col-lg-2">
+                <h3>{!! Form::label('dni',$liquidacion->user->dni,['class'=>'col-lg-1 control-label']) !!}</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
         <div class="col-lg-2">
                 {!! Form::label('periodo','Periodo',['class'=>'control-label']) !!}
               </div>
@@ -50,13 +62,6 @@
 {!! Form::close() !!}
 @endsection
 @section('js')
-<script>
-  $('.select-user').chosen({
-no_results_text: "No se encontro ninguna coincidencia con:",
-max_selected_options: 1,
-placeholder_text_multiple: "SELECCIONE UN EMPLEADO"
-  });
-</script>
 <script>
   $('.select-periodo').chosen({
 no_results_text: "No se encontro ninguna coincidencia con:",

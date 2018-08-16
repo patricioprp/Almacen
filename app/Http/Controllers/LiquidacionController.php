@@ -24,11 +24,11 @@ class LiquidacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
        // $conceptos = Concepto::pluck('descripcion','id');
-       $users = user::all()->pluck('full','id');
-        return view('admin.liquidacion.create')->with('users',$users);
+       $liquidacion = Liquidacion::find($id);
+        return view('admin.liquidacion.create')->with('liquidacion',$liquidacion);
     }
 
     /**
@@ -45,7 +45,7 @@ class LiquidacionController extends Controller
         $liquidacion->hasta= \Carbon\Carbon::parse($liquidacion->hasta)->format('Y-m-d');
         $liquidacion->sueldoBruto=0;
         $liquidacion->sueldoNeto=0;
-        $user = User::find($request->user);
+        $user = User::find($request->id);
         $user->liquidacions()->save($liquidacion);
         flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
         return redirect(route('user.index'));
