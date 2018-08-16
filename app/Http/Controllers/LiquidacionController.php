@@ -26,9 +26,11 @@ class LiquidacionController extends Controller
      */
     public function create($id)
     {
-       // $conceptos = Concepto::pluck('descripcion','id');
+       $conceptos = Concepto::all()->pluck('full','id');
        $liquidacion = Liquidacion::find($id);
-        return view('admin.liquidacion.create')->with('liquidacion',$liquidacion);
+        return view('admin.liquidacion.create')
+        ->with('liquidacion',$liquidacion)
+        ->with('conceptos',$conceptos);
     }
 
     /**

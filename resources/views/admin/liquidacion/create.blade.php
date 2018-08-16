@@ -53,6 +53,16 @@
                  {!! Form::text('hasta',null,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}
               </div>
     </div>
+    <hr />
+    <div class="row">
+                <div class="col-lg-2">
+                                {!! Form::label('conceptos','Conceptos',['class'=>'control-label']) !!}   
+                              </div>
+            <div class="col-lg-2">
+                        {!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select-conceptos', 'multiple', 'required']) !!}
+            </div>
+    </div>
+    <hr />
     <div class="row">
             <div class="col-lg-2">
                     {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
@@ -63,6 +73,11 @@
 @endsection
 @section('js')
 <script>
+$('.select-conceptos').chosen({
+disable_search_threshold: 20,
+placeholder_text_multiple: "Seleccione un máximo de tres Conceptos",
+max_selected_options: 20,
+   });
   $('.select-periodo').chosen({
 no_results_text: "No se encontro ninguna coincidencia con:",
 max_selected_options: 1,

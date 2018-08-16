@@ -33,9 +33,7 @@ class User extends Authenticatable
       public function scopeSearch($query, $apellido ){
         return $query->where('apellido', 'LIKE', "%$apellido%");
      }
-     public function getFullAttribute(){
-      return $this->dni.'-'.$this->name.'-'.$this->apellido;
-   }
+
     /**
      * The attributes that should be hidden for arrays.
      *
