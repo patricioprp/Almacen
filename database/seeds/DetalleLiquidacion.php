@@ -15,8 +15,9 @@ class DetalleLiquidacion extends Seeder
         $faker = Faker::create();
         for ($i=1; $i < 16; $i++) {
             \DB::table('detalle_liquidacions')->insert(array(
-                   'monto' => $i.$i,
-                   'subtotal' => $i.$i,
+                   'subTotalD' => $i.$i,
+                   'subTotalH' => $i.$i,
+                   'unidad' => $i,
                    'liquidacion_id' => $i,
                    'concepto_id' => $i,
                    'created_at' => date('Y-m-d H:m:s'),

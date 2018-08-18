@@ -17,7 +17,7 @@ class CrearTablaConceptos extends Migration
             $table->increments('id');
             $table->string('descripcion');
             $table->enum('tipo',['haberes','deducciones'])->default('haberes');
-            $table->integer('unidad');
+            $table->integer('importe');
             $table->timestamps();
         });
     }

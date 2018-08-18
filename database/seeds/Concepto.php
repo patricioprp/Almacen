@@ -17,7 +17,7 @@ class Concepto extends Seeder
             \DB::table('conceptos')->insert(array(
                    'descripcion' => $faker->firstNameFemale,
                    'tipo'  => $faker->randomElement(['haberes','deducciones']),
-                   'unidad' => $i,
+                   'importe' => $i,
                    'created_at' => date('Y-m-d H:m:s'),
                    'updated_at' => date('Y-m-d H:m:s')
             ));
