@@ -61,6 +61,12 @@
             <div class="col-lg-2">
                         {!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select-conceptos', 'multiple', 'required']) !!}
             </div>
+            <div class="col-lg-2">
+                        {!! Form::label('unidades','Unidades',['class'=>'control-label']) !!}   
+                      </div>
+                      <div class="col-lg-2">
+                         {!! Form::text('unidades',null,['class' => 'form-control', 'placeholder'=>'Unidades','required']) !!}
+                      </div>
     </div>
     <hr />
     <div class="row">

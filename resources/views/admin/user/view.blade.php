@@ -17,9 +17,9 @@
           @foreach($dliq->detalleliquidacion as $l)
           <tr>
           <td>{{$l->concepto->descripcion}}</td>
-          <td>{{$l->monto}}</td>
-          <td>{{$l->monto}}</td>
-          <td>{{$l->monto}}</td>
+          <td>{{$l->subTotalH}}</td>
+          <td>{{$l->subTotalD}}</td>
+          <td>{{$l->unidad}}</td>
           </tr>
           @endforeach
       </tbody>

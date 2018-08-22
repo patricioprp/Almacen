@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Concepto;
 use App\User;
 use App\Liquidacion;
+use App\Detalleliquidacion;
 
 class LiquidacionController extends Controller
 {
@@ -49,6 +50,22 @@ class LiquidacionController extends Controller
         $liquidacion->sueldoNeto=0;
         $user = User::find($request->id);
         $user->liquidacions()->save($liquidacion);
+        $dliq = new Detalleliquidacion();
+        foreach($request->conceptos as $concepto){
+        $cpt = Concepto::find($concepto);
+        if($cpt->tipo="haberes"){
+            $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades;
+            dd($dliq->subTotalH);
+        }
+        else{
+            $dliq->subTotalD = $dliq->subTotalD + $cpt->importe*$request->unidades;
+            dd($dliq->subTotalD);  
+        }
+           
+        }
+
+
+
         flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
         return redirect(route('user.index'));
     }
