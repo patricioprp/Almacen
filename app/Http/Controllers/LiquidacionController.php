@@ -55,15 +55,27 @@ class LiquidacionController extends Controller
         $cpt = Concepto::find($concepto);
         if($cpt->tipo="haberes"){
             $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades;
-            dd($dliq->subTotalH);
+            $dliq->subtotalD = $dliq->subtotalD + 0;
+ 
+            //dd($dliq->subTotalH);
         }
         else{
             $dliq->subTotalD = $dliq->subTotalD + $cpt->importe*$request->unidades;
-            dd($dliq->subTotalD);  
-        }
+            $dliq->subtotalH = $dliq->subtotalH + 0;
+           // dd($dliq->subTotalD);
+ 
            
         }
+        $dliq->concepto_id = $cpt->id; 
+        $dliq->unidad = $request->unidades;
+        $dliq->liquidacion_id = $liquidacion->id;
+        $liquidacion->sueldoBruto = $dliq->subTotalH + $dliq->subTotalD;
+        $liquidacion->sueldoNeto = $dliq->subTotalH - $dliq->subTotalD;  
+        $liquidacion->user_id = $user->id;
 
+        }
+        $liquidacion->save();
+        $dliq->save();
 
 
         flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
