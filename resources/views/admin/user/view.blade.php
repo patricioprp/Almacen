@@ -11,15 +11,17 @@
         <th>UNIDADES</th>
         <th>HABERES</th>
         <th>DEDUCCIONES</th>
+        <th>IMPORTE</th>
 
       </thead>
       <tbody>
           @foreach($dliq->detalleliquidacion as $l)
           <tr>
           <td>{{$l->concepto->descripcion}}</td>
+          <td>{{$l->unidad}}</td>
           <td>{{$l->subTotalH}}</td>
           <td>{{$l->subTotalD}}</td>
-          <td>{{$l->unidad}}</td>
+          <td>{{$l->concepto->importe}}</td>
           </tr>
           @endforeach
       </tbody>
