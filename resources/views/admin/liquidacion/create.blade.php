@@ -55,11 +55,8 @@
     </div>
     <hr />
     <div class="row">
-      <a class="btn btn-primary" href="" id="addInput">
-       <span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar Concepto</span>
-        </a> 
         <div id="dynamicDiv"> 
-            <p> 
+         <p> 
             <div class="col-lg-2">
                {!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}   
                 </div>
@@ -72,13 +69,15 @@
                    <div class="col-lg-2">
                      {!! Form::text('unidades',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}
                      </div>
-
+                     <div class="col-lg-2">
+                        <a class="btn btn-primary" href="" id="addInput">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar Concepto</span>
+                         </a> 
+                     </div>
                 </p>
+                </div>                       
                 </div>
-                       
-                </div>
-            </div>
- 
+            </div> 
     <hr />
     <div class="row">
             <div class="col-lg-2">
@@ -94,20 +93,32 @@
   var cntDiv = $('#dynamicDiv');
   $(document).on('click','#addInput',function(){
   $('<p>'
-  +'<dic class="row">'
-  +'<div class="col-lg-2">'+'{!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}'   
+  +'<div class="row">'
+  +'<div class="col-lg-2">'
+  +'{!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}'   
+  +'</div>'
+  +'<div class="col-lg-2">'
+  +'<div class="col-lg-2">'
+  +'{!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select+'-'+conceptos','id'=>'conceptos', 'multiple', 'required']) !!}'
+  +'</div>'
+  +'<div class="col-lg-2">'
+  +'{!! Form::label('unidades','Unidades',['class'=>'control-label','id'=>'Unidades']) !!}' 
+  +'</div>'
+  +'<div class="col-lg-2">'
+  +'{!! Form::text('unidades',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}'
   +'</div>'
   +'<div class="col-lg-2">'
   +'<a class="btn btn-danger" href="" id="remInput">'
-  +'<span class="glyphicon glyphicon-minus" aria-hidden="true">Remover Campo</span>'
+  +'<span class="glyphicon glyphicon-minus" aria-hidden="true">Remover Concepto</span>'
   +'</a>'
+  +'</div>'
   +'</div>'
   +'</div>'
   +'</p>').appendTo(cntDiv);
    return false;
   });
    $(document).on('click','#remInput', function(){
-   $(this).parents('p').remove();
+   $(this).closest('.row').remove();
     return false;
    });
 });
