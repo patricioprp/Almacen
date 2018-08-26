@@ -42,7 +42,6 @@ class LiquidacionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $liquidacion = new Liquidacion($request->all());
         $liquidacion->desde= \Carbon\Carbon::parse($liquidacion->desde)->format('Y-m-d');
         $liquidacion->hasta= \Carbon\Carbon::parse($liquidacion->hasta)->format('Y-m-d');
@@ -50,21 +49,17 @@ class LiquidacionController extends Controller
         $liquidacion->sueldoNeto=0;
         $user = User::find($request->id);
         $user->liquidacions()->save($liquidacion);
+        foreach ($request->conceptos as $concepto){
+            dd($concepto);
         $dliq = new Detalleliquidacion();
-        foreach($request->conceptos as $concepto){
         $cpt = Concepto::find($concepto);
         if($cpt->tipo="haberes"){
             $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades;
-            $dliq->subtotalD = $dliq->subtotalD + 0;
- 
-            //dd($dliq->subTotalH);
+            $dliq->subtotalD = $dliq->subtotalD + 0; 
         }
         else{
-            $dliq->subTotalD = $dliq->subTotalD + $cpt->importe*$request->unidades;
-            $dliq->subtotalH = $dliq->subtotalH + 0;
-           // dd($dliq->subTotalD);
- 
-           
+            $dliq->subTotalD = $dliq->subTotalD - $cpt->importe*$request->unidades;
+            $dliq->subtotalH = $dliq->subtotalH + 0;           
         }
         $dliq->concepto_id = $cpt->id; 
         $dliq->unidad = $request->unidades;
@@ -72,12 +67,11 @@ class LiquidacionController extends Controller
         $liquidacion->sueldoBruto = $dliq->subTotalH + $dliq->subTotalD;
         $liquidacion->sueldoNeto = $dliq->subTotalH - $dliq->subTotalD;  
         $liquidacion->user_id = $user->id;
-
-        }
-        $liquidacion->save();
         $dliq->save();
-
-
+        $liquidacion->save();
+        }
+        $liquidacion->detalleliquidacion()->save($dliq);
+       
         flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
         return redirect(route('user.index'));
     }

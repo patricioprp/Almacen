@@ -55,19 +55,30 @@
     </div>
     <hr />
     <div class="row">
-                <div class="col-lg-2">
-                                {!! Form::label('conceptos','Conceptos',['class'=>'control-label']) !!}   
-                              </div>
+      <a class="btn btn-primary" href="" id="addInput">
+       <span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar Concepto</span>
+        </a> 
+        <div id="dynamicDiv"> 
+            <p> 
             <div class="col-lg-2">
-                        {!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select-conceptos', 'multiple', 'required']) !!}
+               {!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}   
+                </div>
+             <div class="col-lg-2">
+                {!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select-conceptos','id'=>'conceptos', 'multiple', 'required']) !!}
+              </div>
+               <div class="col-lg-2">
+                {!! Form::label('unidades','Unidades',['class'=>'control-label','id'=>'Unidades']) !!}   
+                 </div>
+                   <div class="col-lg-2">
+                     {!! Form::text('unidades',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}
+                     </div>
+
+                </p>
+                </div>
+                       
+                </div>
             </div>
-            <div class="col-lg-2">
-                        {!! Form::label('unidades','Unidades',['class'=>'control-label']) !!}   
-                      </div>
-                      <div class="col-lg-2">
-                         {!! Form::text('unidades',null,['class' => 'form-control', 'placeholder'=>'Unidades','required']) !!}
-                      </div>
-    </div>
+ 
     <hr />
     <div class="row">
             <div class="col-lg-2">
@@ -79,10 +90,33 @@
 @endsection
 @section('js')
 <script>
+ $(function (){
+  var cntDiv = $('#dynamicDiv');
+  $(document).on('click','#addInput',function(){
+  $('<p>'
+  +'<dic class="row">'
+  +'<div class="col-lg-2">'+'{!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}'   
+  +'</div>'
+  +'<div class="col-lg-2">'
+  +'<a class="btn btn-danger" href="" id="remInput">'
+  +'<span class="glyphicon glyphicon-minus" aria-hidden="true">Remover Campo</span>'
+  +'</a>'
+  +'</div>'
+  +'</div>'
+  +'</p>').appendTo(cntDiv);
+   return false;
+  });
+   $(document).on('click','#remInput', function(){
+   $(this).parents('p').remove();
+    return false;
+   });
+});
+</script>
+<script>
 $('.select-conceptos').chosen({
-disable_search_threshold: 20,
-placeholder_text_multiple: "Seleccione un máximo de tres Conceptos",
-max_selected_options: 20,
+disable_search_threshold: 1,
+placeholder_text_multiple: "Seleccione un Concepto como Maximo",
+max_selected_options: 1,
    });
   $('.select-periodo').chosen({
 no_results_text: "No se encontro ninguna coincidencia con:",

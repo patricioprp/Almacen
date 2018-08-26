@@ -8,20 +8,20 @@
     <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
       <thead>
         <th>CONCEPTO</th>
-        <th>UNIDADES</th>
         <th>HABERES</th>
         <th>DEDUCCIONES</th>
         <th>IMPORTE</th>
+        <th>UNIDADES</th>
 
       </thead>
       <tbody>
           @foreach($dliq->detalleliquidacion as $l)
           <tr>
           <td>{{$l->concepto->descripcion}}</td>
-          <td>{{$l->unidad}}</td>
           <td>{{$l->subTotalH}}</td>
           <td>{{$l->subTotalD}}</td>
           <td>{{$l->concepto->importe}}</td>
+          <td>{{$l->unidad}}</td>
           </tr>
           @endforeach
       </tbody>
