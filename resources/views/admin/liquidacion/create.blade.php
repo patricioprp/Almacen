@@ -56,7 +56,7 @@
     <hr />
     <div class="row">
         <div id="dynamicDiv"> 
-         <p> 
+         <div class="row">
             <div class="col-lg-2">
                {!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}   
                 </div>
@@ -67,18 +67,20 @@
                 {!! Form::label('unidades','Unidades',['class'=>'control-label','id'=>'Unidades']) !!}   
                  </div>
                    <div class="col-lg-2">
-                     {!! Form::text('unidades',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}
+                     {!! Form::text('unidades[]',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}
                      </div>
                      <div class="col-lg-2">
                         <a class="btn btn-primary" href="" id="addInput">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Adicionar Concepto</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Concepto</span>
                          </a> 
                      </div>
-                </p>
+                     <hr />
+        </div>
                 </div>                       
                 </div>
+                
             </div> 
-    <hr />
+    
     <div class="row">
             <div class="col-lg-2">
                     {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}
@@ -92,29 +94,34 @@
  $(function (){
   var cntDiv = $('#dynamicDiv');
   $(document).on('click','#addInput',function(){
-  $('<p>'
-  +'<div class="row">'
+  $('<div class="row">'
+  +'<p>'
+  +'<hr />'
   +'<div class="col-lg-2">'
   +'{!! Form::label('conceptos','Conceptos',['class'=>'control-label','id'=>'Conceptos']) !!}'   
   +'</div>'
   +'<div class="col-lg-2">'
-  +'<div class="col-lg-2">'
-  +'{!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select+'-'+conceptos','id'=>'conceptos', 'multiple', 'required']) !!}'
+  +'{!! Form::select('conceptos[]', $conceptos,null,['class' => 'form-control select-conceptos','id'=>'conceptos', 'multiple', 'required']) !!}'
   +'</div>'
   +'<div class="col-lg-2">'
   +'{!! Form::label('unidades','Unidades',['class'=>'control-label','id'=>'Unidades']) !!}' 
   +'</div>'
   +'<div class="col-lg-2">'
-  +'{!! Form::text('unidades',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}'
+  +'{!! Form::text('unidades[]',null,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}'
   +'</div>'
   +'<div class="col-lg-2">'
   +'<a class="btn btn-danger" href="" id="remInput">'
-  +'<span class="glyphicon glyphicon-minus" aria-hidden="true">Remover Concepto</span>'
+  +'<span class="glyphicon glyphicon-minus" aria-hidden="true">Eliminar Concepto</span>'
   +'</a>'
   +'</div>'
+  +'</p>'
   +'</div>'
-  +'</div>'
-  +'</p>').appendTo(cntDiv);
+  ).appendTo(cntDiv);
+  $('.select-conceptos').chosen({
+disable_search_threshold: 1,
+placeholder_text_multiple: "Seleccione un Concepto como Maximo",
+max_selected_options: 1,
+   });
    return false;
   });
    $(document).on('click','#remInput', function(){

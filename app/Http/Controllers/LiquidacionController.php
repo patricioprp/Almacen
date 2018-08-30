@@ -48,32 +48,39 @@ class LiquidacionController extends Controller
         $liquidacion->sueldoBruto=0;
         $liquidacion->sueldoNeto=0;
         $user = User::find($request->id);
-        $user->liquidacions()->save($liquidacion);
-        foreach ($request->conceptos as $concepto){
-            dd($concepto);
+        //dd($request->all());
+		$user->liquidacions()->save($liquidacion);
+		//dd($request->conceptos);
+        foreach ($request->conceptos as $idx=> $concepto){
+          // dump($concepto);
         $dliq = new Detalleliquidacion();
         $cpt = Concepto::find($concepto);
         if($cpt->tipo="haberes"){
-            $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades;
+            $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades[$idx];
             $dliq->subtotalD = $dliq->subtotalD + 0; 
         }
         else{
-            $dliq->subTotalD = $dliq->subTotalD - $cpt->importe*$request->unidades;
+            $dliq->subTotalD = $dliq->subTotalD - $cpt->importe*$request->unidades[$idx];
             $dliq->subtotalH = $dliq->subtotalH + 0;           
         }
+
         $dliq->concepto_id = $cpt->id; 
-        $dliq->unidad = $request->unidades;
+        $dliq->unidad = $request->unidades[$idx];
         $dliq->liquidacion_id = $liquidacion->id;
-        $liquidacion->sueldoBruto = $dliq->subTotalH + $dliq->subTotalD;
-        $liquidacion->sueldoNeto = $dliq->subTotalH - $dliq->subTotalD;  
-        $liquidacion->user_id = $user->id;
         $dliq->save();
-        $liquidacion->save();
-        }
         $liquidacion->detalleliquidacion()->save($dliq);
+        dump($dliq);
+        }
        
-        flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
-        return redirect(route('user.index'));
+        $liquidacion->sueldoBruto = $dliq->subTotalH + $dliq->subTotalD;
+        $liquidacion->sueldoNeto = $dliq->subTotalH - $dliq->subTotalD;        
+        $liquidacion->save();
+        $liquidacion->user_id = $user->id;
+
+        //dump($liquidacion);
+       
+        //flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
+        //return redirect(route('user.index'));
     }
 
     /**
