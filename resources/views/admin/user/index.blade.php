@@ -3,7 +3,7 @@
 @section('content')
 @section('usuario','active')
 <h3><b>Modulo de Gestion de Empleado</b></h3>
-<a href="{{ asset('admin/user/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+<a href="{{ asset('admin/user/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Empleado</span></a>
    {{-- Buscador de empleado --}}
    {!! Form::open(['route' => 'user.index', 'method' => 'GET', 'autocomplete' => 'off',
    'class' => 'navbar-form pull-right', 'id' => 'formSearch']) !!}
@@ -52,7 +52,7 @@
            <td>{{$user->domicilio->numero}}</td>
          <td><a href="{{route('admin.user.destroy',$user->id)}}" onclick="return confirm('Desea eliminar a {{$user->name}}{{$user->apellido}}')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
             <a href="{{route('user.edit',$user->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-            <a href="{{route('admin.user.show',$user->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+            <a href="{{route('admin.user.show',$user->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Liquidaciones</span></a></td>
           </td>
          </tr>
       @endforeach

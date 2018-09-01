@@ -5,7 +5,7 @@
 <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3>
-       </div>   <a href="{{ route('admin.liquidacion.create',$user->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+       </div>   <a href="{{ route('admin.liquidacion.create',$user->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Liquidacion</span></a>
                                
         <div class="panel-body">
                 <div class="col-xs-12">
@@ -26,10 +26,18 @@
                                 <td>${{$liq->sueldoNeto}}</td>
                                 <td>${{$liq->sueldoBruto}}</td>
                                 <td>{{$liq->periodo}}</td>
-                                <td>{{$liq->estado}}</td>
+                                <td>
+                                  @if ($liq->estado=="pendiente")
+                                    <h4><span class="label label-warning">{{$liq->estado}}</h4></span>
+                                  @else
+                                  <h4><span class="label label-success">{{$liq->estado}}</h4></span>
+                                  @endif
+                                </td>
                                 <td>{{\Carbon\Carbon::parse($liq->desde)->format('d-m-Y')}}</td>
                                 <td>{{\Carbon\Carbon::parse($liq->hasta)->format('d-m-Y')}}</td>
-                                <td><a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <td>
+                                    <a href="{{route('admin.liquidacion.destroy',$liq->id)}}" onclick="return confirm('Desea eliminar La Liquidacion?')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                  <a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Conceptos</span></a>
                                 </td>
                              </tr>
                               @endforeach

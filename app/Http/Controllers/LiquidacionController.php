@@ -124,6 +124,9 @@ class LiquidacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $liquidacion=Liquidacion::find($id);
+        $liquidacion->forceDelete();
+        flash("Se elimino Liquidacion de  " . $liquidacion->user->nombre.",".$liquidacion->user->apellido. " correctamente!")->error();
+        return redirect(route('user.index'));
     }
 }
