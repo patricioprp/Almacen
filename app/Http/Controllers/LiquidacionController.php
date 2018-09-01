@@ -55,32 +55,31 @@ class LiquidacionController extends Controller
           // dump($concepto);
         $dliq = new Detalleliquidacion();
         $cpt = Concepto::find($concepto);
-        if($cpt->tipo="haberes"){
-            $dliq->subTotalH = $dliq->subTotalH + $cpt->importe*$request->unidades[$idx];
-            $dliq->subtotalD = $dliq->subtotalD + 0; 
+
+        if($cpt->tipo=="haberes"){
+            $dliq->subTotalH = $cpt->importe*$request->unidades[$idx];
+            $dliq->subtotalD =  0; 
         }
         else{
-            $dliq->subTotalD = $dliq->subTotalD - $cpt->importe*$request->unidades[$idx];
-            $dliq->subtotalH = $dliq->subtotalH + 0;           
+            $dliq->subTotalD =  $cpt->importe*$request->unidades[$idx];
+            $dliq->subtotalH =  0;           
         }
 
         $dliq->concepto_id = $cpt->id; 
         $dliq->unidad = $request->unidades[$idx];
         $dliq->liquidacion_id = $liquidacion->id;
         $dliq->save();
-        $liquidacion->detalleliquidacion()->save($dliq);
-        dump($dliq);
         }
-       
-        $liquidacion->sueldoBruto = $dliq->subTotalH + $dliq->subTotalD;
-        $liquidacion->sueldoNeto = $dliq->subTotalH - $dliq->subTotalD;        
-        $liquidacion->save();
+        foreach($liquidacion->detalleliquidacions as $d){
+        $liquidacion->sueldoBruto = $liquidacion->sueldoBruto + $d->subTotalH + $d->subTotalD;
+        $liquidacion->sueldoNeto = $liquidacion->sueldoNeto + $d->subTotalH - $d->subTotalD;        
         $liquidacion->user_id = $user->id;
 
-        //dump($liquidacion);
-       
-        //flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
-        //return redirect(route('user.index'));
+        $liquidacion->detalleliquidacions()->save($d);
+        }
+        $liquidacion->save();
+        flash("Se creo la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
+        return redirect(route('user.index'));
     }
 
     /**

@@ -15,7 +15,7 @@
 
       </thead>
       <tbody>
-          @foreach($dliq->detalleliquidacion as $l)
+          @foreach($dliq->detalleliquidacions as $l)
           <tr>
           <td>{{$l->concepto->descripcion}}</td>
           <td>{{$l->subTotalH}}</td>

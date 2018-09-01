@@ -9,7 +9,7 @@ class Liquidacion extends Model
     protected $table = 'liquidacions';
     protected $fillable = ['sueldoBruto','sueldoNeto','periodo','desde','hasta','estado','user_id'];
     
-    public function detalleLiquidacion(){
+    public function detalleLiquidacions(){
         //relacion uno a muchos
         return $this->hasMany('\App\Detalleliquidacion'); 
       }
