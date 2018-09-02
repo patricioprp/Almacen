@@ -101,12 +101,12 @@ class LiquidacionController extends Controller
      */
     public function edit($id)
     {
-        $concepto = Concepto::all()->pluck('full','id');
+        $conceptos = Concepto::all()->pluck('full','id');
         $liquidacion = Liquidacion::find($id);
         $liquidacion->concepto;
         return view('admin.liquidacion.edit')
         ->with('liquidacion',$liquidacion)
-        ->with('concepto',$concepto);
+        ->with('conceptos',$conceptos);
         
     }
 
