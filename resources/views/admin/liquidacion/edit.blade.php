@@ -85,6 +85,11 @@
             </div>
             @endforeach
     </div>
+    <div class="row">
+        <div class="col-lg-2">
+                {!! Form::submit('Registrar',['class'=>'btn btn-warning']) !!}
+        </div>
+    </div>
 </div>
 {!! Form::close() !!}
 @endsection

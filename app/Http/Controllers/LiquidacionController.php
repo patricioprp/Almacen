@@ -119,7 +119,28 @@ class LiquidacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $liquidacion = Liquidacion::find($id);
+       $liquidacion->desde = \Carbon\Carbon::parse($request->desde)->format('Y-m-d');
+       $liquidacion->hasta = \Carbon\Carbon::parse($request->hasta)->format('Y-m-d');
+       $liquidacion->periodo = $request->periodo;
+       $liquidacion->estado = $request->estado;
+
+         if(sizeof($liquidacion->detalleliquidacions)==sizeof($request->conceptos))
+             dd("son iguales");
+         elseif(sizeof($liquidacion->detalleliquidacions) > sizeof($request->conceptos))
+             dd("el original es mayor q el actual");
+         else
+             dd("el original es menor q el actual");
+       foreach($liquidacion->detalleliquidacions as $dl){
+        if($liquidacion->detalleliquidacions){
+            dump("es verdadero");
+        }
+        if($liquidacion->detalleliquidacions=="null"){
+            dump("es falso");
+        }
+
+       }
+
     }
 
     /**
