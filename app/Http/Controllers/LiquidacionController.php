@@ -124,13 +124,45 @@ class LiquidacionController extends Controller
        $liquidacion->hasta = \Carbon\Carbon::parse($request->hasta)->format('Y-m-d');
        $liquidacion->periodo = $request->periodo;
        $liquidacion->estado = $request->estado;
+       $liquidacion->sueldoBruto=0;
+       $liquidacion->sueldoNeto=0;
+                     
+       //Evaluo si la cantidad de conceptos que quiero editar son iguales, mayo o menos que los que estan almacenados
 
          if(sizeof($liquidacion->detalleliquidacions)==sizeof($request->conceptos))
-             dd("son iguales");
+         foreach($liquidacion->detalleliquidacions as $dliq){
+            foreach ($request->conceptos as $idx=> $concepto){
+                $cpt = Concepto::find($concepto);
+
+                if($cpt->tipo=="haberes"){
+                    $dliq->subTotalH = $cpt->importe*$request->unidades[$idx];
+                    $dliq->subtotalD = 0; 
+                }
+                else{
+                    $dliq->subTotalD =  $cpt->importe*$request->unidades[$idx];
+                    $dliq->subtotalH =  0;           
+                }
+        
+                $dliq->concepto_id = $cpt->id; 
+                $dliq->unidad = $request->unidades[$idx];
+                $dliq->liquidacion_id = $liquidacion->id;
+                $dliq->save();
+            }
+            $liquidacion->sueldoBruto = $liquidacion->sueldoBruto + $dliq->subTotalH + $dliq->subTotalD;
+            $liquidacion->sueldoNeto = $liquidacion->sueldoNeto + $dliq->subTotalH - $dliq->subTotalD;        
+    
+            $liquidacion->detalleliquidacions()->save($dliq);
+            $liquidacion->save();
+            dd($liquidacion);
+         }
+             
          elseif(sizeof($liquidacion->detalleliquidacions) > sizeof($request->conceptos))
              dd("el original es mayor q el actual");
          else
              dd("el original es menor q el actual");
+
+
+
        foreach($liquidacion->detalleliquidacions as $dl){
         if($liquidacion->detalleliquidacions){
             dump("es verdadero");
