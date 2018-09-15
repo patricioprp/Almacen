@@ -9,16 +9,16 @@
                     <h3>{!! Form::label('empleado','Empleado:',['class'=>'col-lg-1 control-label']) !!}</h3>
             </div>
         <div class="col-lg-2">
-                <h3>{!! Form::label('user',$liquidacion->user->name,['class'=>'col-lg-1 control-label']) !!}</h3>
+                <h3>{!! Form::label('user',$user->name,['class'=>'col-lg-1 control-label']) !!}</h3>
         </div>
         <div class="col-lg-2">
-                        {!! Form::text('id',$liquidacion->user->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                        {!! Form::text('id',$user->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
                      </div>
         <div class="col-lg-2">
-                <h3>{!! Form::label('apellido',$liquidacion->user->apellido,['class'=>'col-lg-1 control-label']) !!}</h3>
+                <h3>{!! Form::label('apellido',$user->apellido,['class'=>'col-lg-1 control-label']) !!}</h3>
         </div>
         <div class="col-lg-2">
-                <h3>{!! Form::label('dni',$liquidacion->user->dni,['class'=>'col-lg-1 control-label']) !!}</h3>
+                <h3>{!! Form::label('dni',$user->dni,['class'=>'col-lg-1 control-label']) !!}</h3>
         </div>
     </div>
     <hr />

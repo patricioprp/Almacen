@@ -28,9 +28,9 @@ class LiquidacionController extends Controller
     public function create($id)
     {
        $conceptos = Concepto::all()->pluck('full','id');
-       $liquidacion = Liquidacion::find($id);
+       $user = User::find($id);
         return view('admin.liquidacion.create')
-        ->with('liquidacion',$liquidacion)
+        ->with('user',$user)
         ->with('conceptos',$conceptos);
     }
 
@@ -130,19 +130,21 @@ class LiquidacionController extends Controller
        //Evaluo si la cantidad de conceptos que quiero editar son iguales, mayo o menos que los que estan almacenados
 
          if(sizeof($liquidacion->detalleliquidacions)==sizeof($request->conceptos))
+         foreach ($request->conceptos as $idx=> $concepto){
          foreach($liquidacion->detalleliquidacions as $dliq){
-            foreach ($request->conceptos as $idx=> $concepto){
+            //dd($liquidacion);
                 $cpt = Concepto::find($concepto);
-
+                
                 if($cpt->tipo=="haberes"){
                     $dliq->subTotalH = $cpt->importe*$request->unidades[$idx];
+                    
                     $dliq->subtotalD = 0; 
                 }
                 else{
                     $dliq->subTotalD =  $cpt->importe*$request->unidades[$idx];
-                    $dliq->subtotalH =  0;           
+                    $dliq->subtotalH =  0 ;           
                 }
-        
+                 //dd($dliq);
                 $dliq->concepto_id = $cpt->id; 
                 $dliq->unidad = $request->unidades[$idx];
                 $dliq->liquidacion_id = $liquidacion->id;
@@ -153,7 +155,7 @@ class LiquidacionController extends Controller
     
             $liquidacion->detalleliquidacions()->save($dliq);
             $liquidacion->save();
-            dd($liquidacion);
+            
          }
              
          elseif(sizeof($liquidacion->detalleliquidacions) > sizeof($request->conceptos))

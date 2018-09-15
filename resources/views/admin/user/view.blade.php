@@ -26,5 +26,7 @@
           @endforeach
       </tbody>
     </table>
+    <p><h3>Total Sueldo Neto: ${{$dliq->sueldoNeto}}</h3><p> 
+    <h3>Total Sueldo Bruto: ${{$dliq->sueldoBruto}}</h3>
     </div>
 @endsection
