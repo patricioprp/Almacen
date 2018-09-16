@@ -144,7 +144,7 @@ class LiquidacionController extends Controller
                     $dliq->subTotalD =  $cpt->importe*$request->unidades[$idx];
                     $dliq->subtotalH =  0 ;           
                 }
-                 //dd($dliq);
+                 dd($dliq);
                 $dliq->concepto_id = $cpt->id; 
                 $dliq->unidad = $request->unidades[$idx];
                 $dliq->liquidacion_id = $liquidacion->id;
