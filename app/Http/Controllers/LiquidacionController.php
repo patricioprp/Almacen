@@ -147,6 +147,8 @@ class LiquidacionController extends Controller
                 $liquidacion->sueldoNeto = $liquidacion->sueldoNeto + $dliq[0]->subTotalH - $dliq[0]->subTotalD; 
                 $liquidacion->save();                                   
             }
+            flash("Se edito la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
+            return redirect(route('user.index'));
  
         }
          elseif(sizeof($liquidacion->detalleliquidacions) > sizeof($request->conceptos))
