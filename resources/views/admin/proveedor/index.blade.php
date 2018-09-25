@@ -45,7 +45,8 @@
                <td>{{$proveedor->domicilio->calle}}</td>
                <td>{{$proveedor->domicilio->numero}}</td>
              <td><a href="{{route('admin.proveedor.destroy',$proveedor->id)}}" onclick="return confirm('Desea eliminar a {{$proveedor->nombre}}')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                <a href="{{route('proveedor.edit',$proveedor->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                <a href="{{route('proveedor.edit',$proveedor->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                <a href="#" class="btn btn-success" title="Comprar">Comprar</a></td>
              </tr>
           @endforeach
     
