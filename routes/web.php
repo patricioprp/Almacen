@@ -52,7 +52,17 @@ Route::group(['prefix' => 'admin'], function(){
         'uses' => 'LiquidacionController@destroy',
         'as' => 'admin.liquidacion.destroy'
       ]);
+      Route::resource('proveedor','ProveedorController');
+      Route::get('proveedor/provinces/{id}','StateController@getProvinces');
+      Route::get('proveedor/locations/{id}','ProvinceController@getLocations');
+      Route::get('proveedor/proveedor_id/provinces/{id}','StateController@getProvinces');
+      Route::get('proveedor/proveedor_id/locations/{id}','ProvinceController@getLocations');
+      Route::get('proveedor/{id}/destroy',[
+          'uses' => 'ProveedorController@destroy',
+          'as' => 'admin.proveedor.destroy'
+        ]);
     });
+
 
 Route::resource('states','StateController');
 Route::get('provinces/{id}','StateController@getProvinces');

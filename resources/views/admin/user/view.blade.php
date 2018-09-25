@@ -7,6 +7,8 @@
 <div class="table-responsive">
     <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
       <thead>
+        <th>ID DLiq</th>
+        <th>ID Concepto</th>
         <th>CONCEPTO</th>
         <th>HABERES</th>
         <th>DEDUCCIONES</th>
@@ -17,6 +19,8 @@
       <tbody>
           @foreach($dliq->detalleliquidacions as $l)
           <tr>
+          <td>{{$l->id}}</td>
+          <td>{{$l->concepto->id}}</td>
           <td>{{$l->concepto->descripcion}}</td>
           <td>{{$l->subTotalH}}</td>
           <td>{{$l->subTotalD}}</td>

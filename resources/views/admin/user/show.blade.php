@@ -12,6 +12,7 @@
                         <div class="table-responsive">
                           <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
                             <thead>
+                              <th>ID</th>
                               <th>SUELDO NETO</th>
                               <th>SUELDO BRUTO</th>
                               <th>PERIODO</th>
@@ -23,6 +24,7 @@
                             <tbxdy>
                         @foreach ($user->liquidacions as $liq)
                                  <tr>
+                                 <td>{{$liq->id}}</td>   
                                 <td>${{$liq->sueldoNeto}}</td>
                                 <td>${{$liq->sueldoBruto}}</td>
                                 <td>{{$liq->periodo}}</td>
