@@ -68,7 +68,8 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+        return view('admin.proveedor.show')->with('proveedor',$proveedor);
     }
 
     /**

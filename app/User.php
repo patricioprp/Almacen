@@ -29,6 +29,10 @@ class User extends Authenticatable
         //relacion uno a muchos
         return $this->hasMany('\App\Ventas'); 
       }
+      public function compras(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Compra'); 
+      }
 
       public function scopeSearch($query, $apellido ){
         return $query->where('apellido', 'LIKE', "%$apellido%");

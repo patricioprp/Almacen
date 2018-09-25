@@ -19,4 +19,7 @@ class Compra extends Model
         //relacion uno a muchos
         return $this->belongsToMany('\App\Producto'); 
       }
+      public function user(){
+        return $this->belongsTo('\App\User');
+      }
 }
