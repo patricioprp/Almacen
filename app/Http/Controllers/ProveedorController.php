@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Proveedor;
 use App\State;
+use App\Province;
+use App\Location;
 use App\Domicilio;
 use Illuminate\Http\Request;
 
@@ -77,7 +79,12 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proveedor=Proveedor::find($id);
+        $states = State::pluck('name','id');
+        $provinces = Province::pluck('name','id');
+        $locations = Location::pluck('name','id');
+        return view('admin.proveedor.edit')->with('proveedor',$proveedor)
+        ->with('states',$states)->with('provinces',$provinces)->with('locations',$locations);
     }
 
     /**
@@ -89,7 +96,19 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proveedor=Proveedor::find($id);
+        $proveedor->fill($request->all());
+        $proveedor->save();
+        $domicilio = Domicilio::find($request->domicilio);
+        $domicilio->calle = $request->calle;
+        $domicilio->barrio = $request->barrio;
+        $domicilio->numero = $request->numero;
+        $domicilio->location_id = $request->location;
+        $domicilio->location->province_id = $request->province;
+        $domicilio->location->province->state_id= $request->state;
+        $domicilio->save();
+        flash("Se actualizo el proveedor  " . $proveedor->nombre . " correctamente!")->warning();
+        return redirect(route('proveedor.index'));
     }
 
     /**
