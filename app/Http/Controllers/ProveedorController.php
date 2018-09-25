@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Proveedor;
+use App\State;
+use App\Domicilio;
 use Illuminate\Http\Request;
 
 
@@ -25,7 +27,8 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        $states = State::pluck('name','id');
+        return view('admin.proveedor.create')->with('states',$states);
     }
 
     /**
@@ -36,7 +39,23 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Guardando el Domicilio del Proveedor
+        $domicilio = new Domicilio();
+        $domicilio->calle = $request->calle;
+        $domicilio->barrio = $request->barrio;
+        $domicilio->numero = $request->numero;
+        $domicilio->location_id = $request->location;
+        $domicilio->location->province_id = $request->province;
+        $domicilio->location->province->state_id= $request->state;
+        $domicilio->save();
+        //Guardando el Proveedor
+        $proveedor = new Proveedor();
+        $proveedor->nombre=$request->name;
+        $proveedor->telefono=$request->telefono;
+        $proveedor->domicilio_id = $domicilio->id;
+        $proveedor->save();
+        flash("Se creo el Proveedor" . $proveedor->nombre . " correctamente!")->important();
+        return redirect(route('proveedor.index'));
     }
 
     /**
