@@ -7,6 +7,7 @@ use App\Compra;
 use App\Producto;
 use App\Proveedor;
 use App\Tipo;
+use App\Linea_compra;
 
 class CompraController extends Controller
 {
@@ -44,7 +45,21 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        $compra = new Compra($request->all());
+        $compra->fecha= \Carbon\Carbon::parse($lcompra->fecha)->format('Y-m-d');
+        $compra->monto = 0 ;
+        $proveedor = Proveedor::find($rquest->idp);
+        $proveedor->compras()->save($compra);
+        foreach ($request->productos as $idx=> $producto){
+            $lc = new Linea_compra();
+            $prod = Producto::find($producto);
+            $lc->cantidad = $request->cantidad[$idx];
+            $lc->subTotal = $prod->precio_costo*$request->cantidad[$idx];
+            $lc->producto_id = $prod->id;
+            $lc->compra_id = $compra->id;
+            $lc->save();
+        }
     }
 
     /**
