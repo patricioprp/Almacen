@@ -22,4 +22,8 @@ class Producto extends Model
     public function lineaVenta(){
           return $this->hasOne('\App\Linea_venta');
         }
+        public function lineaCompra(){
+          //relacion uno a muchos
+          return $this->hasMany('\App\Linea_compra'); 
+        }
 }

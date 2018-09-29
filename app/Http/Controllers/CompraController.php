@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Compra;
 
 class CompraController extends Controller
 {
@@ -79,6 +80,9 @@ class CompraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $compra=Compra::find($id);
+        $compra->forceDelete();
+        flash("Se elimino Compra de  " . $compra->proveedor->nombre . " correctamente!")->error();
+        return redirect(route('proveedor.index'));
     }
 }

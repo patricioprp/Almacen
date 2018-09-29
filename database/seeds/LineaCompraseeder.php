@@ -15,6 +15,8 @@ class LineaCompraseeder extends Seeder
         for ($i=1; $i < 16; $i++) {
         \DB::table('compra_producto')->insert(array(
            'producto_id' => $i,
+           'subTotal' => $i,
+           'cantidad' => $i,
            'compra_id' => $i,
            'created_at' => date('Y-m-d H:m:s'),
            'updated_at' => date('Y-m-d H:m:s')

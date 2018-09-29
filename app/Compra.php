@@ -22,4 +22,8 @@ class Compra extends Model
       public function user(){
         return $this->belongsTo('\App\User');
       }
+      public function lineaCompra(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Linea_compra'); 
+      }
 }

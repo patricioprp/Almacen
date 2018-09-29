@@ -15,6 +15,8 @@ class CrearTablaLineaCompra extends Migration
     {
         Schema::create('compra_producto', function (Blueprint $table) {
             $table->increments('id');
+            $table->double('subTotal',8,2);
+            $table->integer('cantidad');
             $table->integer('producto_id')->unsigned();
             $table->integer('compra_id')->unsigned();
 

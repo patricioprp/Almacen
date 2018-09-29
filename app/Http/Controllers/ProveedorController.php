@@ -6,6 +6,7 @@ use App\State;
 use App\Province;
 use App\Location;
 use App\Domicilio;
+use App\Compra;
 use Illuminate\Http\Request;
 
 
@@ -71,7 +72,11 @@ class ProveedorController extends Controller
         $proveedor = Proveedor::find($id);
         return view('admin.proveedor.show')->with('proveedor',$proveedor);
     }
-
+    public function view($id)
+    {
+        $compra = Compra::find($id);
+        return view('admin.proveedor.view')->with('compra',$compra);
+    }
     /**
      * Show the form for editing the specified resource.
      *
