@@ -8,6 +8,8 @@ use App\Producto;
 use App\Proveedor;
 use App\Tipo;
 use App\Linea_compra;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class CompraController extends Controller
 {
@@ -45,11 +47,13 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $user = Auth::user();
+        //dd($user->id);
         $compra = new Compra($request->all());
-        $compra->fecha= \Carbon\Carbon::parse($lcompra->fecha)->format('Y-m-d');
+        $compra->fecha= \Carbon\Carbon::parse($compra->fecha)->format('Y-m-d');
         $compra->monto = 0 ;
-        $proveedor = Proveedor::find($rquest->idp);
+        $compra->user_id = $user->id; 
+        $proveedor = Proveedor::find($request->idp);
         $proveedor->compras()->save($compra);
         foreach ($request->productos as $idx=> $producto){
             $lc = new Linea_compra();
@@ -60,6 +64,14 @@ class CompraController extends Controller
             $lc->compra_id = $compra->id;
             $lc->save();
         }
+        foreach($compra->lineaCompra as $l){
+            $compra->monto = $compra->monto + $l->subTotal;        
+            $compra->proveedor_id = $proveedor->id;   
+            $compra->lineaCompra()->save($l);
+            }
+            $compra->save();
+            flash("Se creo la Compra del Proveeddor: " . $compra->proveedor->nombre. " correctamente!")->success();
+            return redirect(route('proveedor.index'));
     }
 
     /**
