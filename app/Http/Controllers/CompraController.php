@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Compra;
+use App\Producto;
+use App\Proveedor;
+use App\Tipo;
 
 class CompraController extends Controller
 {
@@ -24,7 +27,13 @@ class CompraController extends Controller
      */
     public function create($id)
     {
-        dd("hola, estoy para crear una compra");
+        $tipos     = Tipo::all()->pluck('show','id');
+        $productos = Producto::all()->pluck('full','id');
+        $proveedor = Proveedor::find($id);
+         return view('admin.compra.create')
+         ->with('proveedor',$proveedor)
+         ->with('productos',$productos)
+         ->with('tipos',$tipos);
     }
 
     /**

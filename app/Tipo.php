@@ -14,4 +14,7 @@ class Tipo extends Model
         //relacion uno a muchos
         return $this->hasMany('\App\Producto'); 
       }
+      public function getShowAttribute(){
+        return $this->descripcion;
+     }
 }
