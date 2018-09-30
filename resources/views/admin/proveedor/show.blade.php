@@ -14,7 +14,7 @@
                             <thead>
                               <th>FECHA</th>
                               <th>MONTO</th>
-                              <th>EMPLEADO </th>
+                              <th>VENDEDOR</th>
                               <th>ACCION</th>
                             </thead>
                             <tbxdy>

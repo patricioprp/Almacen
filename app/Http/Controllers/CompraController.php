@@ -93,7 +93,13 @@ class CompraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::all()->pluck('full','id');
+        $tipo = Tipo::all()->pluck('show','id');
+        $compra = Compra::find($id);
+        return view('admin.compra.edit')
+        ->with('producto',$producto)
+        ->with('compra',$compra)
+        ->with('tipo',$tipo);
     }
 
     /**
@@ -105,7 +111,7 @@ class CompraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
