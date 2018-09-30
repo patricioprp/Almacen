@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\Tipo;
 use App\Stock;
+use App\Proveedor;
 
 class ProductoController extends Controller
 {
@@ -71,7 +72,11 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+        $tipos = Tipo::all()->pluck('show','id');
+        return view('admin.producto.edit')
+        ->with('producto',$producto)
+        ->with('tipos',$tipos);
     }
 
     /**
@@ -83,7 +88,18 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->fill($request->all());
+        $producto->tipo_id = $request->tipos;
+        $producto->save();
+        $stock = Stock::find($producto->stock_id);
+        $stock->minimo = $request->minimo;
+        $stock->cantidad = $request->cantidad;
+        $stock->save();
+        flash("Se edito el Producto: " . $producto->descripcion . " correctamente!")->warning();
+        return redirect(route('producto.index'));
+        //dump($producto);
+        //dump($request->all());
     }
 
     /**

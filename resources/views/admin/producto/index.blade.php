@@ -35,8 +35,8 @@
          <tr>
            <td>{{$prod->id}}</td>
            <td>{{$prod->descripcion}}</td>
-           <td>{{$prod->precio_costo}}</td>
-           <td>{{$prod->precio_venta}}</td>
+           <td>${{$prod->precio_costo}}</td>
+           <td>${{$prod->precio_venta}}</td>
            <td>{{$prod->stock->cantidad}}</td>
            <td>{{$prod->stock->minimo}}</td>
            <td>{{$prod->tipo->descripcion}}</td>
