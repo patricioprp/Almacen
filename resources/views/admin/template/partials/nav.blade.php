@@ -15,7 +15,7 @@
        <div class="collapse navbar-collapse navbar-ex1-collapse">
          <ul class="nav navbar-nav navbar-right">
            <li class="@yield('venta')"><a href="{{ asset('admin/empleado')}}"><b>Gestionar Venta</b></a></li>
-           <li class="@yield('producto')"><a href="{{ asset('admin/contrato')}}"><b>Gestionar Producto</b></a></li>
+           <li class="@yield('producto')"><a href="{{ asset('admin/producto')}}"><b>Gestionar Producto</b></a></li>
            <li class="@yield('proveedor')"><a href="{{ asset('admin/proveedor')}}"><b>Gestionar Proveedor</b></a></li>
            <li class="@yield('cliente')"><a href="{{ asset('admin/cliente')}}"><b>Gestionar Cliente</b></a></li>
            <li class="@yield('usuario')"><a href="{{ asset('admin/user')}}"><b>Gestion de Empleado</b></a></li>

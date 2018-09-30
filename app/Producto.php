@@ -29,4 +29,7 @@ class Producto extends Model
     public function getFullAttribute(){
           return $this->descripcion.'-'.$this->precio_costo.'-'.$this->precio_venta;
        }
+       public function scopeSearch($query, $descripcion ){
+        return $query->where('descripcion', 'LIKE', "%$descripcion%");
+     }
 }

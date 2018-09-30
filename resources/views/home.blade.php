@@ -94,7 +94,7 @@
                                 <div class="card-body text-center">
                                   <h5 class="card-title">PRODUCTOS</h5>
                                   <p class="card-text"></p>
-                                  <a href="#"><img src="{{ asset('images/productos')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                  <a href="{{ asset('admin/producto')}}"><img src="{{ asset('images/productos')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                 </div>
                               </div>
                         </div>
@@ -103,7 +103,7 @@
                                     <div class="card-body text-center">
                                       <h5 class="card-title">VENTAS</h5>
                                       <p class="card-text"></p>
-                                      <a href="#"><img src="{{ asset('images/venta')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                      <a href=""><img src="{{ asset('images/venta')}}" class="img-thumbnail rounded-circle" alt=""></a>
                                     </div>
                                   </div>
                             </div>

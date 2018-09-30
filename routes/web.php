@@ -69,14 +69,23 @@ Route::group(['prefix' => 'admin'], function(){
             'uses' => 'ProveedorController@view',
             'as' => 'admin.proveedor.view'
           ]);
-          Route::resource('compra','CompraController');
-          Route::get('compra/create/{id}', [
+        Route::resource('compra','CompraController');
+        Route::get('compra/create/{id}', [
               'uses' => 'CompraController@create',
               'as' => 'admin.compra.create'
-            ]);
-            Route::get('compra/{id}/destroy',[
+          ]);
+        Route::get('compra/{id}/destroy',[
               'uses' => 'CompraController@destroy',
               'as' => 'admin.compra.destroy'
+          ]);
+          Route::resource('producto','ProductoController');
+          Route::get('producto/create/{id}', [
+              'uses' => 'ProductoController@create',
+              'as' => 'admin.producto.create'
+            ]);
+            Route::get('Producto/{id}/destroy',[
+              'uses' => 'ProductoController@destroy',
+              'as' => 'admin.producto.destroy'
             ]);
     });
 
