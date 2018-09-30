@@ -111,7 +111,24 @@ class CompraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
+       $user = Auth::user();
+       $compra = Compra::find($id);
+       $compra->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
+       $compra->monto = 0 ;
+       $compra->user_id = $user->id;
+       foreach ($request->productos as $idx=> $producto){
+        $prod = Producto::find($producto);
+        $lc = Linea_compra::find($compra->lineaCompra[$idx]); 
+        $lc[0]->subTotal = $prod->precio_costo*$request->cantidad[$idx];
+        $lc[0]->producto_id = $prod->id;
+        $lc[0]->compra_id = $compra->id;
+        $compra->lineaCompra()->save($lc[0]);
+        $compra->monto = $compra->monto + $lc[0]->subTotal;
+        $compra->save();
+       }
+       flash("Se edito la Compra a de Proveedor: " . $compra->proveedor->nombre. " correctamente!")->success();
+       return redirect(route('proveedor.index'));
     }
 
     /**
