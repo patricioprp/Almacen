@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\Tipo;
+use App\Stock;
 
 class ProductoController extends Controller
 {
@@ -38,7 +39,17 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto($request->all());
+        $stock = new Stock();
+        $stock->cantidad = $request->cantidad;
+        $stock->minimo = $request->minimo;
+        $stock->save();
+        $producto->stock_id = $stock->id;
+        $producto->tipo_id =$request->tipos;
+        $producto->save();
+        flash("Se creo el Producto: " . $producto->descripcion . " correctamente!")->important();
+        return redirect(route('producto.index'));
+
     }
 
     /**

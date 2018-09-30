@@ -42,7 +42,7 @@
                    {!! Form::label('tipo','Tipo de Articulo',['class'=>'control-label']) !!}
                   </div>
                   <div class="col-lg-2">
-                        {!! Form::select('tipos[]', $tipos,null,['class' => 'form-control select-tipos','id'=>'tipos', 'multiple', 'required']) !!}
+                        {!! Form::select('tipos', $tipos,null,['class' => 'form-control select-tipos','id'=>'tipos', 'multiple', 'required']) !!}
                   </div> 
              </div>
              <hr />
