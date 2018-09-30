@@ -84,6 +84,10 @@ class VentaContadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $venta = Venta::find($id);
+        $venta->forceDelete();
+       flash("Se elimino la Venta del Empleado:  " . $venta->user->name . " correctamente!")->error();
+        return redirect(route('ventaContado.index'));
     }
 }
+ 
