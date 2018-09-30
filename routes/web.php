@@ -78,15 +78,32 @@ Route::group(['prefix' => 'admin'], function(){
               'uses' => 'CompraController@destroy',
               'as' => 'admin.compra.destroy'
           ]);
-          Route::resource('producto','ProductoController');
-          Route::get('producto/create/{id}', [
+        Route::resource('producto','ProductoController');
+        Route::get('producto/create/{id}', [
               'uses' => 'ProductoController@create',
               'as' => 'admin.producto.create'
             ]);
-            Route::get('Producto/{id}/destroy',[
+        Route::get('Producto/{id}/destroy',[
               'uses' => 'ProductoController@destroy',
               'as' => 'admin.producto.destroy'
             ]);
+        Route::resource('ventaContado','VentaContadoController');
+        Route::get('ventaContado/create/{id}', [
+                  'uses' => 'VentaContadoController@create',
+                  'as' => 'admin.ventaContado.create'
+                ]);
+        Route::get('ventaContado/{id}/destroy',[
+                  'uses' => 'VentaContadoController@destroy',
+                  'as' => 'admin.ventaContado.destroy'
+                ]);
+        Route::get('ventaContado/show/{id}', [
+                  'uses' => 'VentaContadoController@show',
+                  'as' => 'admin.ventaContado.show'
+                ]);
+        Route::get('ventaContado/view/{id}', [
+                  'uses' => 'VentaContadoController@view',
+                  'as' => 'admin.ventaContado.view'
+                ]);
     });
 
 
