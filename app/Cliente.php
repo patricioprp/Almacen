@@ -20,6 +20,10 @@ class Cliente extends Model
     public function cuenta_corriente(){
         return $this->hasOne('\App\Cuenta_corriente');
        }
+       public function pagocc(){
+        //relacion uno a muchos
+        return $this->hasMany('\App\Pago_cc'); 
+      }
     public function scopeSearch($query, $apellido ){
         return $query->where('apellido', 'LIKE', "%$apellido%");
      }

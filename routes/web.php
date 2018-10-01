@@ -137,6 +137,19 @@ Route::group(['prefix' => 'admin'], function(){
                           'uses' => 'VentaCuentaCorrienteController@viewCC',
                           'as' => 'admin.ventaCC.viewCC'
                         ]);
+                        Route::resource('pago','PagoController');
+                        Route::get('pago/{id}/destroy',[
+                            'uses' => 'PagoController@destroy',
+                            'as' => 'admin.pago.destroy'
+                          ]);
+                          Route::get('pago/show/{id}', [
+                            'uses' => 'PagoController@show',
+                            'as' => 'admin.pago.show'
+                          ]);
+                          Route::get('pago/create/{id}', [
+                            'uses' => 'PagoController@create',
+                            'as' => 'admin.pago.create'
+                          ]);
     });
 
 

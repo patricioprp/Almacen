@@ -25,6 +25,7 @@
                       <a href="{{route('admin.ventaCC.destroy',$lv->id)}}" onclick="return confirm('Desea eliminar La Liquidacion?')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     <a href="{{route('admin.cliente.view',$lv->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Detalles</span></a>
                     <a href="{{route('admin.ventaCC.viewCC',$cliente->cuenta_corriente->id)}}" class="btn btn-primary" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Saldo CC</span></a>
+                    <a href="{{route('admin.pago.show',$cliente->id)}}" class="btn btn-primary" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Pago CC</span></a>
                     </td>
                  </tr>
                   @endforeach
