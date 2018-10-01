@@ -95,7 +95,11 @@ class VentaContadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productos = Producto::all()->pluck('full','id');
+        $venta = Venta::find($id);
+        return view('admin.venta.edit')
+        ->with('productos',$productos)
+        ->with('venta',$venta);
     }
 
     /**
