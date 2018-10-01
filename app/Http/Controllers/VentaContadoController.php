@@ -111,7 +111,25 @@ class VentaContadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $user = Auth::user();
+        $venta = venta::find($id);
+        $venta->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
+        $venta->monto = 0 ;
+        $venta->user_id = $user->id;
+        $venta->cliente_id = 10;
+        foreach ($request->productos as $idx=> $producto){
+            $prod = Producto::find($producto);
+            $lv = Linea_venta::find($venta->lineaVentas[$idx]); 
+            $lv[0]->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+            $lv[0]->producto_id = $prod->id;
+            $lv[0]->venta_id = $venta->id;
+            $venta->lineaVentas()->save($lv[0]);
+            $venta->monto = $venta->monto + $lv[0]->subTotal;
+            $venta->save();
+           }
+           flash("Se edito la Venta del Empleado: " . $venta->user->name. " correctamente!")->success();
+           return redirect(route('ventaContado.index'));
     }
 
     /**
