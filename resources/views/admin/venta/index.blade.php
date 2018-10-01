@@ -20,7 +20,7 @@
                    <td>{{$venta->id}}</td>
                    <td>{{$venta->monto}}</td>
                    <td>{{\Carbon\Carbon::parse($venta->fecha)->format('d-m-Y')}}</td>
-                   <td>{{$venta->user->name}}{{$venta->user->apellido}}</td>
+                   <td>{{$venta->user->name}}-{{$venta->user->apellido}}</td>
                  <td><a href="{{route('admin.ventaContado.destroy',$venta->id)}}" onclick="return confirm('Desea eliminar a {{$venta->user->name}}{{$venta->user->apellido}}')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     <a href="{{route('ventaContado.edit',$venta->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                     <a href="{{route('admin.ventaContado.show',$venta->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Detalles</span></a></td>

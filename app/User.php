@@ -27,7 +27,7 @@ class User extends Authenticatable
 
        public function ventas(){
         //relacion uno a muchos
-        return $this->hasMany('\App\Ventas'); 
+        return $this->hasMany('\App\Venta'); 
       }
       public function compras(){
         //relacion uno a muchos

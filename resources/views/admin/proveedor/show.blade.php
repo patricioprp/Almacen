@@ -17,7 +17,7 @@
                               <th>VENDEDOR</th>
                               <th>ACCION</th>
                             </thead>
-                            <tbxdy>
+                            <tbody>
                         @foreach ($proveedor->compras as $compra)
                                  <tr>  
                                 <td>{{\Carbon\Carbon::parse($compra->fecha)->format('d-m-Y')}}</td>

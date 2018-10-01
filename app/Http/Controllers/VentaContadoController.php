@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Producto;
 use App\Venta;
+use App\User;
+use App\Cliente;
+use App\Linea_venta;
 
 use Illuminate\Http\Request;
 
@@ -43,7 +46,33 @@ class VentaContadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $venta = new Venta($request->all());
+        $venta->fecha = \Carbon\Carbon::parse($venta->fecha)->format('Y-m-d');
+        $venta->monto = 0;
+        $venta->cliente_id= 10;
+        $venta->user_id = $request->idu;
+        $cliente = Cliente::find(10);
+        $cliente->ventas()->save($venta);
+        $user = User::find($request->idu);
+        $user->ventas()->save($venta);
+        foreach ($request->productos as $idx=> $producto){
+            $lv = new Linea_venta();
+            $prod = Producto::find($producto);
+            $lv->cantidad = $request->cantidad[$idx];
+            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+            $lv->producto_id = $prod->id;
+            $lv->venta_id = $venta->id;
+            $lv->save();
+        }
+        foreach($venta->lineaVentas as $l){
+            $venta->monto = $venta->monto + $l->subTotal;          
+            $venta->lineaventas()->save($l);
+            }
+            $venta->save();
+           // dd($venta);
+            flash("Se creo la Venta del Empleado: " . $venta->user->name. " correctamente!")->success();
+            return redirect(route('ventaContado.index'));
+        
     }
 
     /**
@@ -54,7 +83,8 @@ class VentaContadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $venta = Venta::find($id);
+        return view('admin.venta.show')->with('venta',$venta);
     }
 
     /**

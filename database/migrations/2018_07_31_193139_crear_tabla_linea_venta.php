@@ -16,6 +16,7 @@ class CrearTablaLineaVenta extends Migration
         Schema::create('linea_ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cantidad');
+            $table->integer('subTotal');
             $table->integer('venta_id')->unsigned();
             $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
             $table->integer('producto_id')->unsigned();

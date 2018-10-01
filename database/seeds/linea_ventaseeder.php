@@ -15,6 +15,7 @@ class linea_ventaseeder extends Seeder
         for ($i=1; $i < 16; $i++) {
         \DB::table('linea_ventas')->insert(array(
             'cantidad' => $i,
+            'subTotal' => $i,
            'venta_id' => $i,
            'producto_id' => $i,
 
