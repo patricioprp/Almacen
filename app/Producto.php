@@ -27,8 +27,11 @@ class Producto extends Model
           return $this->hasMany('\App\Linea_compra'); 
         }
     public function getFullAttribute(){
-          return $this->descripcion.'-'.$this->precio_costo.'-'.$this->precio_venta;
+          return $this->descripcion.'-'.'$'.$this->precio_costo;
        }
+       public function getVentaAttribute(){
+        return $this->descripcion.'-'.'$'.$this->precio_venta;
+     }
        public function scopeSearch($query, $descripcion ){
         return $query->where('descripcion', 'LIKE', "%$descripcion%");
      }

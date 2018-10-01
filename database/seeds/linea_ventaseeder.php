@@ -14,6 +14,7 @@ class linea_ventaseeder extends Seeder
         $faker = Faker::create();
         for ($i=1; $i < 16; $i++) {
         \DB::table('linea_ventas')->insert(array(
+            'cantidad' => $i,
            'venta_id' => $i,
            'producto_id' => $i,
 

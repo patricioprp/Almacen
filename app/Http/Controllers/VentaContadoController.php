@@ -28,7 +28,11 @@ class VentaContadoController extends Controller
      */
     public function create()
     {
-        dd("estoy para crear una venta");
+        $productos = Producto::all()->pluck('venta','id');
+        $user = Auth::user();
+        return view('admin.venta.create')
+        ->with('productos',$productos)
+        ->with('user',$user);
     }
 
     /**
