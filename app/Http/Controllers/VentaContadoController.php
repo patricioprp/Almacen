@@ -118,6 +118,7 @@ class VentaContadoController extends Controller
         $venta->monto = 0 ;
         $venta->user_id = $user->id;
         $venta->cliente_id = 10;
+        $venta->lineaVentas()->forceDelete();
         foreach ($request->productos as $idx=> $producto){
             $prod = Producto::find($producto);
             $lv = Linea_venta::find($venta->lineaVentas[$idx]); 

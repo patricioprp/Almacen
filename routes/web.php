@@ -43,6 +43,18 @@ Route::group(['prefix' => 'admin'], function(){
           'uses' => 'ClienteController@destroy',
           'as' => 'admin.cliente.destroy'
         ]);
+        Route::get('cliente/show/{id}', [
+          'uses' => 'ClienteController@show',
+          'as' => 'admin.cliente.show'
+        ]);
+      Route::get('cliente/view/{id}', [
+          'uses' => 'ClienteController@view',
+          'as' => 'admin.cliente.view'
+        ]);
+        Route::get('cliente/viewCC/{id}', [
+          'uses' => 'ClienteController@viewCC',
+          'as' => 'admin.cliente.viewCC'
+        ]);
     Route::resource('liquidacion','LiquidacionController');
     Route::get('liquidacion/create/{id}', [
         'uses' => 'LiquidacionController@create',
@@ -104,6 +116,27 @@ Route::group(['prefix' => 'admin'], function(){
                   'uses' => 'VentaContadoController@view',
                   'as' => 'admin.ventaContado.view'
                 ]);
+                Route::resource('ventaCC','VentaCuentaCorrienteController');
+                Route::get('ventaCC/create/{id}', [
+                          'uses' => 'VentaCuentaCorrienteController@create',
+                          'as' => 'admin.ventaCC.create'
+                        ]);
+                Route::get('ventaCC/{id}/destroy',[
+                          'uses' => 'VentaCuenteCorrienteController@destroy',
+                          'as' => 'admin.ventaCC.destroy'
+                        ]);
+                Route::get('ventaCC/show/{id}', [
+                          'uses' => 'VentaCuentaCorrienteController@show',
+                          'as' => 'admin.ventaCC.show'
+                        ]);
+                Route::get('ventaCC/view/{id}', [
+                          'uses' => 'VentaCuentaCorrienteController@view',
+                          'as' => 'admin.ventaCC.view'
+                        ]);
+                        Route::get('ventaCC/viewCC/{id}', [
+                          'uses' => 'VentaCuentaCorrienteController@viewCC',
+                          'as' => 'admin.ventaCC.viewCC'
+                        ]);
     });
 
 

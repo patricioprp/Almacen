@@ -55,7 +55,8 @@
            <td>{{$cliente->domicilio->calle}}</td>
            <td>{{$cliente->domicilio->numero}}</td>
          <td><a href="{{route('admin.cliente.destroy',$cliente->id)}}" onclick="return confirm('Desea eliminar a {{$cliente->name}}{{$cliente->apellido}}')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-            <a href="{{route('cliente.edit',$cliente->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+            <a href="{{route('cliente.edit',$cliente->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <a href="{{route('admin.cliente.show',$cliente->id)}}" class="btn btn-success" title="Comprar">Cuenta Corriente</a></td>
          </tr>
       @endforeach
 

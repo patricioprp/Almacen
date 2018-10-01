@@ -6,6 +6,7 @@ use App\State;
 use App\Province;
 use App\Location;
 use App\Domicilio;
+use App\Venta;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -65,9 +66,19 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        return view('admin.cliente.show')->with('cliente',$cliente);
     }
-
+    public function view($id)
+    {
+     $ventas = Venta::find($id);
+     return view('admin.cliente.view')
+     ->with('ventas',$ventas);
+    }
+    public function viewCC($id)
+    {
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *
