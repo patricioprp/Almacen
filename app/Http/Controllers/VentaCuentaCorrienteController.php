@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Cuenta_corriente;
+use App\Cliente;
+use App\Producto;
+use Illuminate\Support\Facades\Auth;
+use App\Venta;
+use App\User;
+use App\Linea_venta;
 
 use Illuminate\Http\Request;
 
@@ -22,9 +28,13 @@ class VentaCuentaCorrienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $productos = Producto::all()->pluck('venta','id');
+        return view('admin.ventacc.create')
+        ->with('cliente',$cliente)
+        ->with('productos',$productos);
     }
 
     /**
@@ -35,7 +45,34 @@ class VentaCuentaCorrienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $user = Auth::user();
+        $venta = new Venta($request->all());
+        $venta->fecha = \Carbon\Carbon::parse($venta->fecha)->format('Y-m-d');
+        $venta->monto = 0;
+        $venta->cliente_id= $request->idc;
+        $venta->user_id = $user->id;
+        $cliente = Cliente::find($request->idc);
+        $cliente->ventas()->save($venta);
+        $user = User::find($user->id);
+        $user->ventas()->save($venta);
+        foreach ($request->productos as $idx=> $producto){
+            $lv = new Linea_venta();
+            $prod = Producto::find($producto);
+            $lv->cantidad = $request->cantidad[$idx];
+            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+            $lv->producto_id = $prod->id;
+            $lv->venta_id = $venta->id;
+            $lv->save();
+        }
+        foreach($venta->lineaVentas as $l){
+            $venta->monto = $venta->monto + $l->subTotal;          
+            $venta->lineaventas()->save($l);
+            }
+            $venta->save();
+           // dd($venta);
+            flash("Se creo la Venta del CLiente: " . $venta->cliente->nombre. " correctamente!")->success();
+            return redirect(route('cliente.index'));
     }
 
     /**
@@ -66,7 +103,11 @@ class VentaCuentaCorrienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productos = Producto::all()->pluck('full','id');
+        $venta = Venta::find($id);
+        return view('admin.ventacc.edit')
+        ->with('productos',$productos)
+        ->with('venta',$venta);
     }
 
     /**
@@ -89,6 +130,9 @@ class VentaCuentaCorrienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $venta = Venta::find($id);
+        $venta->forceDelete();
+       flash("Se elimino la Venta del Empleado:  " . $venta->cliente->nombre . " correctamente!")->error();
+        return redirect(route('cliente.index'));
     }
 }

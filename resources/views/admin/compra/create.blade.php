@@ -18,7 +18,7 @@
                     <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  
                   </div>
                   <div class="col-lg-2">
-                    <h3> {!! Form::text('fecha',null,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>
+                    <h3> {!! Form::text('fecha',null,['class' => 'form-control compra', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>
                   </div>
         </div>
         <hr />
@@ -123,5 +123,10 @@ no_results_text: "No se encontro ninguna coincidencia con:",
 max_selected_options: 1,
 placeholder_text_multiple: "Seleccione un Tipo"
    });
+</script>
+<script>
+$( function() {
+$( ".compra" ).datepicker();
+} );
 </script>
 @endsection

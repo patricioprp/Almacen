@@ -1,13 +1,13 @@
 @extends('admin.template.main')
-@section('title','Creando Venta Contado')
+@section('title','Creando Venta CC')
 @section('content')
 @section('venta','active')
-<h3>Vendedor: {{$user->name}}-{{$user->apellido}}</h3>
-{!! Form::open(['route' => 'ventaContado.store','method'=>'POST']) !!}
+<h3>Cliente: {{$cliente->nombre}}-{{$cliente->apellido}}</h3>
+{!! Form::open(['route' => 'ventaCC.store','method'=>'POST']) !!}
 <div class="form-group">
     <div class="row">
         <div class="col-lg-2">
-                {!! Form::text('idu',$user->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                {!! Form::text('idc',$cliente->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
         </div>
         <div class="col-lg-2">
                 <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  

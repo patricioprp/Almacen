@@ -1,7 +1,7 @@
 @extends('admin.template.main')
-@section('title','Editando Venta al Contado')
+@section('title','Editando Venta al CC')
 @section('content')
-<h2>Editar Venta de {{$venta->user->name}} {{$venta->user->apellido}}</h2>
+<h2>Editar Venta de {{$venta->cliente->nombre}} {{$venta->cliente->apellido}}</h2>
 @section('venta','active')
 {!! Form::open(['route' => ['ventaContado.update',$venta],'method'=>'PUT']) !!}
 <div class="form-group">

@@ -122,7 +122,7 @@ Route::group(['prefix' => 'admin'], function(){
                           'as' => 'admin.ventaCC.create'
                         ]);
                 Route::get('ventaCC/{id}/destroy',[
-                          'uses' => 'VentaCuenteCorrienteController@destroy',
+                          'uses' => 'VentaCuentaCorrienteController@destroy',
                           'as' => 'admin.ventaCC.destroy'
                         ]);
                 Route::get('ventaCC/show/{id}', [

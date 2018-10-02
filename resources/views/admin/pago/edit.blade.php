@@ -11,8 +11,8 @@
                 <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  
               </div>
               <div class="col-lg-2">
-                <h3> {!! Form::text('fecha',$pago->fecha,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>
-              </div>
+               <h3> {!! Form::text('fecha',\Carbon\Carbon::parse($pago->fecha)->format('d-m-Y'),['class' => 'form-control pago', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>      
+               </div>
               <div class="col-lg-2">
                     <h3>{!! Form::label('monto','Monto',['class'=>'control-label']) !!} </h3>  
                   </div>
@@ -28,4 +28,11 @@
             </div>
 
 {!! Form::close() !!}
+@endsection
+@section('js')
+<script>
+$( function() {
+$( ".pago" ).datepicker();
+} );
+</script>
 @endsection

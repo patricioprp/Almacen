@@ -44,13 +44,13 @@
                 {!! Form::label('desde','Desde',['class'=>'control-label']) !!}
         </div>
         <div class="col-lg-2">
-                {!! Form::text('desde',\Carbon\Carbon::parse($liquidacion->desde)->format('d-m-Y'),['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                {!! Form::text('desde',\Carbon\Carbon::parse($liquidacion->desde)->format('d-m-Y'),['class' => 'form-control desde', 'placeholder'=>'dd-mm-aaaa','required']) !!}
         </div>
         <div class="col-lg-2">
                 {!! Form::label('hasta','Hasta',['class'=>'control-label']) !!}
         </div>
         <div class="col-lg-2">
-                {!! Form::text('hasta',\Carbon\Carbon::parse($liquidacion->hasta)->format('d-m-Y'),['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                {!! Form::text('hasta',\Carbon\Carbon::parse($liquidacion->hasta)->format('d-m-Y'),['class' => 'form-control hasta', 'placeholder'=>'dd-mm-aaaa','required']) !!}
         </div>
     </div>
     <hr />
@@ -152,5 +152,13 @@ no_results_text: "No se encontro ninguna coincidencia con:",
 max_selected_options: 1,
 placeholder_text_multiple: "SELECCIONE UN ESTADO"
     });
+</script>
+<script>
+$( function() {
+$( ".desde" ).datepicker();
+} );
+$( function() {
+$( ".hasta" ).datepicker();
+} );
 </script>
 @endsection

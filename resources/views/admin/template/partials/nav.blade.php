@@ -19,15 +19,6 @@
            <li class="@yield('proveedor')"><a href="{{ asset('admin/proveedor')}}"><b>Gestionar Proveedor</b></a></li>
            <li class="@yield('cliente')"><a href="{{ asset('admin/cliente')}}"><b>Gestionar Cliente</b></a></li>
            <li class="@yield('usuario')"><a href="{{ asset('admin/user')}}"><b>Gestion de Empleado</b></a></li>
-           <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por... <span class="caret"></span></a>
-             <ul class="dropdown-menu">
-               <li><a href="#">Filtro Nº1</a></li>
-               <li><a href="#">Filtro Nº2</a></li>
-               <li role="separator" class="divider"></li>
-               <li><a href="#">Grafica de Programas</a></li>
-             </ul>
-           </li>
          </ul>
    
          <ul class="nav navbar-nav navbar-right">

@@ -11,7 +11,7 @@
                 <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  
               </div>
               <div class="col-lg-2">
-                <h3> {!! Form::text('fecha',null,['class' => 'form-control', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>
+                <h3> {!! Form::text('fecha',null,['class' => 'form-control pago', 'placeholder'=>'dd-mm-aaaa','required']) !!}</h3>
               </div>
               <div class="col-lg-2">
                     <h3>{!! Form::label('monto','Monto',['class'=>'control-label']) !!} </h3>  
@@ -27,4 +27,11 @@
     </div>
 </div>
 {!! Form::close() !!}
+@endsection
+@section('js')
+<script>
+$( function() {
+$( ".pago" ).datepicker();
+} );
+</script>
 @endsection
