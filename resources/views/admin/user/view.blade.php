@@ -33,4 +33,9 @@
     <p><h3>Total Sueldo Neto: ${{$dliq->sueldoNeto}}</h3><p> 
     <h3>Total Sueldo Bruto: ${{$dliq->sueldoBruto}}</h3>
     </div>
+    <p>
+        <a href="{{ route('liquidaciones.pdf',$dliq->id)}}" class="btn btn-sm btn-primary">
+            Descargar Liquidacion en PDF
+        </a>
+    </p>
 @endsection

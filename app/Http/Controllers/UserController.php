@@ -12,6 +12,7 @@ use App\Liquidacion;
 use App\Detalleliquidacion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class UserController extends Controller
 {
@@ -132,5 +133,16 @@ class UserController extends Controller
            flash("Se elimino el Usuario  " . $user->name . " correctamente!")->error();
             return redirect(route('user.index'));
         }
+    }
+
+    public function pdf($id)
+    {
+        $dliq = Liquidacion::find($id); 
+       /* return view('pdf.liquidaciones')
+        ->with('dliq',$dliq);*/
+
+        $pdf = PDF::loadView('pdf.liquidaciones', compact('dliq'));
+
+        return $pdf->download('listado.pdf');
     }
 }
