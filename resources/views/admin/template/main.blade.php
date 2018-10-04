@@ -14,7 +14,7 @@
       @include('admin.template.partials.nav')
     <section>
         <div class="container-fluid">
-            <div class="panel panel-danger">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <strong>@yield('title', 'Tuc-tecno')</strong>
                 </div>
