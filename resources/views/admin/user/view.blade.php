@@ -3,7 +3,7 @@
 @section('content')
 @section('usuario','active')
 <h2><span class="label label-success">{{$dliq->user->name}}-{{$dliq->user->apellido}}</span> Turno: <span class="label label-warning">{{$dliq->user->turno}}</span></h2>
-
+<p><b>Fecha de ingreso: {{\Carbon\Carbon::parse($dliq->user->create_at)->format('d-m-Y')}}</b></p>
 <div class="table-responsive">
     <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
       <thead>

@@ -143,6 +143,6 @@ class UserController extends Controller
 
         $pdf = PDF::loadView('pdf.liquidaciones', compact('dliq'));
 
-        return $pdf->download('listado.pdf');
+        return $pdf->download('Recibo de Sueldo.pdf');
     }
 }
