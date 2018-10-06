@@ -56,6 +56,7 @@ class UserController extends Controller
         $domicilio->save();
         //Guardando el usuario o empleado
         $user = new User($request->all());
+        $user->fechaAlta = \Carbon\Carbon::now();
         $user->password = bcrypt($request->password);
         $user->domicilio_id = $domicilio->id;
         $user->save();

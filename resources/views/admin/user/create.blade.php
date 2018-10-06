@@ -85,7 +85,16 @@
                 {!! Form::text('barrio',null,['class' => 'form-control', 'placeholder'=>'BARRIO','required']) !!}
         </div>
     </div>
-    <hr /><hr />
+    <hr />
+    <div class="row">
+        <div class="col-lg-2">
+            {!! Form::label('type','TIPO',['class'=>'control-label']) !!}
+        </div>
+        <div class="col-lg-2">
+            {!! Form::select('type',['' => 'Seleccione un Tipo', 'admin'=>'Administrador','member'=>'Miembro'],null,['class'=>'form-control']) !!}
+        </div>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-lg-2">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary']) !!}

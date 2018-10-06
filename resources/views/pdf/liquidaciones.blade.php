@@ -51,7 +51,7 @@ h1 {
         <th style="background-color:gray">{{$dliq->user->name}}</th>
         <th style="background-color:gray">{{$dliq->user->apellido}}</th>
         <th style="background-color:gray">{{$dliq->user->turno}}</th>
-        <th style="background-color:gray">{{\Carbon\Carbon::createFromDate($dliq->user->create_at)->age}}</th>
+        <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->user->fechaAlta)->format('d-m-Y')}}}}</th>
       </tr>
     </table>
   </div>
@@ -64,7 +64,7 @@ h1 {
         <th style="background-color:darkblue">Hasta</th>
       </tr>
       <tr>
-        <th style="background-color:gray">5 años</th>
+        <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->user->fechaAlta)->age}} Años</th>
         <th style="background-color:gray">{{$dliq->periodo}}</th>
         <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->desde)->format('d-m-Y')}}</th>
         <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->hasta)->format('d-m-Y')}}</th>
@@ -75,8 +75,8 @@ h1 {
   <div class="attendance-table">
       <p><table class="table-bordered">
         <tr>
-          <th class="attendance-cell"><strong>#Concepto</strong></th>
-          <th class="attendance-cell">CONCEPTO</th>
+          <th class="attendance-cell"><strong>#CONCEPTO</strong></th>
+          <th class="attendance-cell">DESCRIPCION</th>
           <th class="attendance-cell">HABERES</th>
           <th class="attendance-cell">DEDUCCIONES</th>
           <th class="attendance-cell">IMPORTE</th>
