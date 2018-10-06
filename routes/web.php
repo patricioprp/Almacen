@@ -157,6 +157,5 @@ Route::resource('states','StateController');
 Route::get('provinces/{id}','StateController@getProvinces');
 Route::get('locations/{id}','ProvinceController@getLocations');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('descargar-liquidacion/{id}', 'UserController@pdf')->name('liquidaciones.pdf');

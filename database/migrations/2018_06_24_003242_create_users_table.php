@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->bigInteger('telefono');
             $table->bigInteger('dni');
+            $table->date('fechaAlta');
+            $table->enum('type',['member','admin'])->default('member');
             $table->integer('domicilio_id')->unsigned();
             $table->foreign('domicilio_id')->references('id')->on('domicilios');
             $table->rememberToken();

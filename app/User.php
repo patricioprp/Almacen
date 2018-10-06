@@ -16,7 +16,7 @@ class User extends Authenticatable
      */
       protected $table='users';
       protected $fillable = [
-        'name', 'email', 'password','apellido','dni','turno','telefono','domicilio_id'
+        'name', 'email', 'password','apellido','dni','turno','telefono','type','fechaAlta','domicilio_id'
     ];
       public function domicilio() {
         return $this->belongsTo('App\Domicilio');

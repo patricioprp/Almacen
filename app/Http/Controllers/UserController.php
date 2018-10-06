@@ -138,8 +138,6 @@ class UserController extends Controller
     public function pdf($id)
     {
         $dliq = Liquidacion::find($id); 
-       /* return view('pdf.liquidaciones')
-        ->with('dliq',$dliq);*/
 
         $pdf = PDF::loadView('pdf.liquidaciones', compact('dliq'));
 

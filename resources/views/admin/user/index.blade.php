@@ -33,6 +33,7 @@
       <th>BARRIO</th>
       <th>CALLE</th>
       <th>NUMERO</th>
+      <th>TIPO</th>
       <th>ACCION</th>
     </thead>
     <tbody>
@@ -50,6 +51,13 @@
            <td>{{$user->domicilio->barrio}}</td>
            <td>{{$user->domicilio->calle}}</td>
            <td>{{$user->domicilio->numero}}</td>
+           <td>
+            @if ($user->type == "member")
+               <span class="label label-success">{{$user->type}}</span>
+            @else
+              <span class="label label-danger">{{$user->type}}</span>
+            @endif
+          </td>
          <td><a href="{{route('admin.user.destroy',$user->id)}}" onclick="return confirm('Desea eliminar a {{$user->name}}{{$user->apellido}}')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
             <a href="{{route('user.edit',$user->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
             <a href="{{route('admin.user.show',$user->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Liquidaciones</span></a></td>

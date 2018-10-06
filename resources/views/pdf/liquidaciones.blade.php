@@ -22,7 +22,7 @@
     border: 1px solid #000;
 }
 th {
-    background-color: #4CAF50;
+    background-color:cornflowerblue;
     color: white;
 }
 h1 {
@@ -48,10 +48,10 @@ h1 {
         <th style="background-color:darkblue">Fecha de Ingreso</th>
       </tr>
       <tr>
-        <th style="background-color:darkgray">{{$dliq->user->name}}</th>
-        <th style="background-color:darkgray">{{$dliq->user->apellido}}</th>
-        <th style="background-color:darkgray">{{$dliq->user->turno}}</th>
-        <th style="background-color:darkgray">{{\Carbon\Carbon::createFromDate($dliq->user->create_at)->age}}</th>
+        <th style="background-color:gray">{{$dliq->user->name}}</th>
+        <th style="background-color:gray">{{$dliq->user->apellido}}</th>
+        <th style="background-color:gray">{{$dliq->user->turno}}</th>
+        <th style="background-color:gray">{{\Carbon\Carbon::createFromDate($dliq->user->create_at)->age}}</th>
       </tr>
     </table>
   </div>
@@ -64,10 +64,10 @@ h1 {
         <th style="background-color:darkblue">Hasta</th>
       </tr>
       <tr>
-        <th style="background-color:darkgray">5 años</th>
-        <th style="background-color:darkgray">{{$dliq->periodo}}</th>
-        <th style="background-color:darkgray">{{\Carbon\Carbon::parse($dliq->desde)->format('d-m-Y')}}</th>
-        <th style="background-color:darkgray">{{\Carbon\Carbon::parse($dliq->hasta)->format('d-m-Y')}}</th>
+        <th style="background-color:gray">5 años</th>
+        <th style="background-color:gray">{{$dliq->periodo}}</th>
+        <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->desde)->format('d-m-Y')}}</th>
+        <th style="background-color:gray">{{\Carbon\Carbon::parse($dliq->hasta)->format('d-m-Y')}}</th>
       </tr>
     </table></p>
   </div>
@@ -75,7 +75,7 @@ h1 {
   <div class="attendance-table">
       <p><table class="table-bordered">
         <tr>
-          <th class="attendance-cell"><strong>ID Concepto</strong></th>
+          <th class="attendance-cell"><strong>#Concepto</strong></th>
           <th class="attendance-cell">CONCEPTO</th>
           <th class="attendance-cell">HABERES</th>
           <th class="attendance-cell">DEDUCCIONES</th>
@@ -100,8 +100,8 @@ h1 {
       <h3>Total Sueldo Bruto: ${{$dliq->sueldoBruto}}</h3>
       </div>
       <div>
-          Argentina-Tucuman-Rivadavia 1050-Telefono:4277426-Contacto: correo@gmail.com
-          <p>Fecha de Emision del recibo:{{\Carbon\Carbon::now()->format('d-m-Y')}}</p>
+          <b>Argentina-Tucuman-Rivadavia 1050-Telefono:4277426-Contacto: correo@gmail.com</b>
+          <p><b>Fecha de Emision del recibo:{{\Carbon\Carbon::now()->format('d-m-Y')}}</b></p>
             </div>
 </body>
 </html>
