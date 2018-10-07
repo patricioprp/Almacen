@@ -16,4 +16,7 @@ class Concepto extends Model
       public function getFullAttribute(){
         return $this->descripcion.'-'.$this->tipo.'-'.$this->importe;
      }
+     public function scopeSearch($query, $descripcion ){
+      return $query->where('descripcion', 'LIKE', "%$descripcion%");
+   }
 }

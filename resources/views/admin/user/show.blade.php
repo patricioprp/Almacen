@@ -6,7 +6,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading"><h3><p>Empleado: <h2>{{$user->name}}  {{$user->apellido}}  </h2></p></h3>
        </div>   <a href="{{ route('admin.liquidacion.create',$user->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Liquidacion</span></a>
-                               
+       <a href="{{route('concepto.index')}}" class="btn btn-primary">Gestion de Concepto</a>                               
         <div class="panel-body">
                 <div class="col-xs-12">
                         <div class="table-responsive">

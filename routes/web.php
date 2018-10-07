@@ -116,40 +116,45 @@ Route::group(['prefix' => 'admin'], function(){
                   'uses' => 'VentaContadoController@view',
                   'as' => 'admin.ventaContado.view'
                 ]);
-                Route::resource('ventaCC','VentaCuentaCorrienteController');
-                Route::get('ventaCC/create/{id}', [
-                          'uses' => 'VentaCuentaCorrienteController@create',
-                          'as' => 'admin.ventaCC.create'
-                        ]);
-                Route::get('ventaCC/{id}/destroy',[
+        Route::resource('ventaCC','VentaCuentaCorrienteController');
+        Route::get('ventaCC/create/{id}', [
+                  'uses' => 'VentaCuentaCorrienteController@create',
+                  'as' => 'admin.ventaCC.create'
+                ]);
+        Route::get('ventaCC/{id}/destroy',[
                           'uses' => 'VentaCuentaCorrienteController@destroy',
                           'as' => 'admin.ventaCC.destroy'
                         ]);
-                Route::get('ventaCC/show/{id}', [
-                          'uses' => 'VentaCuentaCorrienteController@show',
-                          'as' => 'admin.ventaCC.show'
-                        ]);
-                Route::get('ventaCC/view/{id}', [
-                          'uses' => 'VentaCuentaCorrienteController@view',
-                          'as' => 'admin.ventaCC.view'
-                        ]);
-                        Route::get('ventaCC/viewCC/{id}', [
-                          'uses' => 'VentaCuentaCorrienteController@viewCC',
-                          'as' => 'admin.ventaCC.viewCC'
-                        ]);
-                        Route::resource('pago','PagoController');
-                        Route::get('pago/{id}/destroy',[
-                            'uses' => 'PagoController@destroy',
-                            'as' => 'admin.pago.destroy'
-                          ]);
-                          Route::get('pago/show/{id}', [
-                            'uses' => 'PagoController@show',
-                            'as' => 'admin.pago.show'
-                          ]);
-                          Route::get('pago/create/{id}', [
-                            'uses' => 'PagoController@create',
-                            'as' => 'admin.pago.create'
-                          ]);
+        Route::get('ventaCC/show/{id}', [
+                  'uses' => 'VentaCuentaCorrienteController@show',
+                  'as' => 'admin.ventaCC.show'
+                ]);
+        Route::get('ventaCC/view/{id}', [
+                   'uses' => 'VentaCuentaCorrienteController@view',
+                   'as' => 'admin.ventaCC.view'
+                ]);
+        Route::get('ventaCC/viewCC/{id}', [
+          'uses' => 'VentaCuentaCorrienteController@viewCC',
+          'as' => 'admin.ventaCC.viewCC'
+        ]);
+        Route::resource('pago','PagoController');
+        Route::get('pago/{id}/destroy',[
+                  'uses' => 'PagoController@destroy',
+                  'as' => 'admin.pago.destroy'
+                ]);
+        Route::get('pago/show/{id}', [
+          'uses' => 'PagoController@show',
+          'as' => 'admin.pago.show'
+        ]);
+        Route::get('pago/create/{id}', [
+          'uses' => 'PagoController@create',
+          'as' => 'admin.pago.create'
+        ]);
+        Route::resource('concepto','ConceptoController');
+        Route::get('concepto/{id}/destroy',[
+                  'uses' => 'ConceptoController@destroy',
+                  'as' => 'admin.concepto.destroy'
+                ]);
     });
 
 
