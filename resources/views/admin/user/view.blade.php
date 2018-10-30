@@ -35,7 +35,7 @@
     </div>
     <p>
         <a href="{{ route('liquidaciones.pdf',$dliq->id)}}" class="btn btn-sm btn-primary">
-            Descargar Liquidacion en PDF
+            <span class="glyphicon glyphicon-save" aria-hidden="true">     RECIBO (PDF)</span>
         </a>
     </p>
 @endsection

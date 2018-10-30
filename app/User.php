@@ -24,7 +24,9 @@ class User extends Authenticatable
       public function liquidacions(){
         return $this->hasMany('\App\Liquidacion');
        }
-
+       public function grupo_familiars(){
+        return $this->hasMany('\App\Grupo_familiar');
+       }
        public function ventas(){
         //relacion uno a muchos
         return $this->hasMany('\App\Venta'); 

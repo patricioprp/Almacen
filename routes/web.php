@@ -155,6 +155,19 @@ Route::group(['prefix' => 'admin'], function(){
                   'uses' => 'ConceptoController@destroy',
                   'as' => 'admin.concepto.destroy'
                 ]);
+        Route::resource('familia','GrupoFamiliarController');
+        Route::get('familia/{id}/destroy',[
+                  'uses' => 'GrupoFamiliarController@destroy',
+                  'as' => 'admin.familia.destroy'
+                ]);
+        Route::get('familia/{id}/index',[
+                  'uses' => 'GrupoFamiliarController@index',
+                  'as' => 'admin.familia.index'
+                ]);
+         Route::get('familia/{id}/create',[
+                  'uses' => 'GrupoFamiliarController@create',
+                  'as' => 'admin.familia.create'
+                ]);
     });
 
 

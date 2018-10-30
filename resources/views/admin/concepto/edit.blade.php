@@ -9,7 +9,7 @@
                 {!! Form::label('descripcion','DESCRIPCION',['class'=>'control-label']) !!}
         </div>
         <div class="col-lg-2">
-                {!! Form::text('deescripcion',$concepto->descripcion,['class' => 'form-control', 'placeholder'=>'Descripcion','required']) !!}
+                {!! Form::text('descripcion',$concepto->descripcion,['class' => 'form-control', 'placeholder'=>'Descripcion','required']) !!}
         </div>
         <div class="col-lg-2">
                 {!! Form::label('tipo','TIPO',['class'=>'control-label']) !!}

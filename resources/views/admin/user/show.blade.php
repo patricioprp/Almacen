@@ -41,6 +41,7 @@
                                     <a href="{{route('liquidacion.edit',$liq->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                     <a href="{{route('admin.liquidacion.destroy',$liq->id)}}" onclick="return confirm('Desea eliminar La Liquidacion?')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                                   <a href="{{route('admin.user.view',$liq->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Conceptos</span></a>
+                                  <a href="{{route('admin.familia.index',$user->id)}}" class="btn btn-primary" title="Ver"><span class="glyphicon glyphicon-share" aria-hidden="true"> Grupo familiar</span></a>
                                 </td>
                              </tr>
                               @endforeach
