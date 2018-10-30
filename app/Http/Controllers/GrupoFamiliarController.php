@@ -64,9 +64,10 @@ class GrupoFamiliarController extends Controller
      * @param  \App\Grupo_familiar  $grupo_familiar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grupo_familiar $grupo_familiar)
+    public function edit($id)
     {
-        //
+        $familia = Grupo_familiar::find($id);
+        return view('admin.familia.edit')->with('familia',$familia);
     }
 
     /**
@@ -76,9 +77,18 @@ class GrupoFamiliarController extends Controller
      * @param  \App\Grupo_familiar  $grupo_familiar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grupo_familiar $grupo_familiar)
+    public function update(Request $request, $id)
     {
-        //
+        $familia = Grupo_Familiar::find($id);
+        $familia->f_nac= \Carbon\Carbon::parse($request->f_nac)->format('Y-m-d');
+        $familia->nombre = $request->nombre;
+        $familia->apellido = $request->apellido;
+        $familia->dni = $request->dni;
+        $familia->type = $request->type;
+        $familia->save();
+        flash("Se actualizo el Familiar " . $familia->nombre.",".$familia->apellido. " correctamente!")->warning();
+        return redirect(route('user.index'));
+        
     }
 
     /**
