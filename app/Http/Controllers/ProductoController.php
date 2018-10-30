@@ -7,6 +7,7 @@ use App\Producto;
 use App\Tipo;
 use App\Stock;
 use App\Proveedor;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductoController extends Controller
 {
@@ -114,5 +115,13 @@ class ProductoController extends Controller
         $producto->forceDelete();
        flash("Se elimino el Producto " . $producto->descripcion . " correctamente!")->error();
         return redirect(route('producto.index'));
+    }
+    public function pdf()
+    {
+        $productos = Producto::all(); 
+
+        $pdf = PDF::loadView('pdf.productos', compact('productos'));
+
+        return $pdf->download('Listado de Productos.pdf');
     }
 }

@@ -128,7 +128,6 @@ class LiquidacionController extends Controller
        $liquidacion->sueldoBruto=0;
        $liquidacion->sueldoNeto=0;
        $liquidacion->detalleliquidacions()->delete();
-        // if(sizeof($liquidacion->detalleliquidacions)==sizeof($request->conceptos)){
             foreach ($request->conceptos as $idx=> $concepto){
                 $cpt = Concepto::find($concepto);
                 $dliq = new DetalleLiquidacion();                            
@@ -150,52 +149,6 @@ class LiquidacionController extends Controller
             }
             flash("Se edito la Liquidacion del Empleado: " . $liquidacion->user->apellido .",".$liquidacion->user->name. " correctamente!")->success();
             return redirect(route('user.index'));
- 
-       /* }
-         elseif(sizeof($liquidacion->detalleliquidacions) > sizeof($request->conceptos))
-         {
-         foreach ($request->conceptos as $idx=> $concepto){
-            $cpt = Concepto::find($concepto);
-            $dliq = DetalleLiquidacion::find($liquidacion->detalleliquidacions[$idx]);
-            dump($concepto);
-            dump($liquidacion->detalleliquidacions[$idx]->concepto->id);
-            if($liquidacion->detalleliquidacions[$idx]->concepto->id==$concepto){                            
-            if($cpt->tipo=="haberes"){
-                $dliq[0]->subTotalH = $cpt->importe*$request->unidades[$idx];
-                $dliq[0]->subTotalD = 0;                       
-            }
-            else{
-                $dliq[0]->subTotalH =  0;   
-                $dliq[0]->subTotalD =  $cpt->importe*$request->unidades[$idx];                          
-            }            
-            $dliq[0]->concepto_id = $cpt->id; 
-            $dliq[0]->unidad = $request->unidades[$idx];
-            $dliq[0]->liquidacion_id = $liquidacion->id;                      
-            $liquidacion->detalleliquidacions()->save($dliq[0]);       
-            $liquidacion->sueldoBruto = $liquidacion->sueldoBruto + $dliq[0]->subTotalH + $dliq[0]->subTotalD;
-            $liquidacion->sueldoNeto = $liquidacion->sueldoNeto + $dliq[0]->subTotalH - $dliq[0]->subTotalD; 
-            $liquidacion->save();
-         }
-        
-             $dliq[$idx]->forceDelete();//falta revisar el codigo
-
-        }
-         }
-         else
-             dd("el original es menor q el actual");*/
-
-
-
-      /* foreach($liquidacion->detalleliquidacions as $dl){
-        if($liquidacion->detalleliquidacions){
-            dump("es verdadero");
-        }
-        if($liquidacion->detalleliquidacions=="null"){
-            dump("es falso");
-        }
-
-       }*/
-
     }
 
     /**

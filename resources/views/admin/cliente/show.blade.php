@@ -4,7 +4,7 @@
 @section('venta','active')
 <div class="panel-heading"><h3><p>Clinete: <h2>{{$cliente->nombre}}{{$cliente->apellido}} </h2></p></h3></div>
 <a href="{{route('admin.ventaCC.create',$cliente->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Venta</span></a>
-<a href="{{route('admin.concepto.create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Concepto</span></a>
+<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Concepto</span></a>
 <div class="panel-body">
     <div class="col-xs-12">
             <div class="table-responsive">

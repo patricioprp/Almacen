@@ -48,6 +48,10 @@
   </table>
   </div>
   </div>
-  <p></p>
+  <p>
+    <a href="{{ route('productos.pdf')}}" class="btn btn-sm btn-primary">
+        <span class="glyphicon glyphicon-save" aria-hidden="true">     RECIBO (PDF)</span>
+    </a>
+</p>
 {!! $productos->render() !!}
 @endsection

@@ -177,3 +177,4 @@ Route::get('locations/{id}','ProvinceController@getLocations');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('descargar-liquidacion/{id}', 'UserController@pdf')->name('liquidaciones.pdf');
+Route::get('descargar-productos', 'ProductoController@pdf')->name('productos.pdf');
