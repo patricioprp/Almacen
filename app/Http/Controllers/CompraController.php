@@ -9,7 +9,9 @@ use App\Proveedor;
 use App\Tipo;
 use App\Linea_compra;
 use App\User;
+use App\Stock;
 use Illuminate\Support\Facades\Auth;
+
 
 class CompraController extends Controller
 {
@@ -62,6 +64,9 @@ class CompraController extends Controller
             $lc->subTotal = $prod->precio_costo*$request->cantidad[$idx];
             $lc->producto_id = $prod->id;
             $lc->compra_id = $compra->id;
+            $stock=Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad+$request->cantidad[$idx];
+            $stock->save();
             $lc->save();
         }
         foreach($compra->lineaCompra as $l){
