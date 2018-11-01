@@ -164,8 +164,15 @@ class CompraController extends Controller
     public function destroy($id)
     {
         $compra=Compra::find($id);
+        foreach($compra->lineaCompra as $l){
+            $prod=Producto::find($l->producto_id);
+            $stock =Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad-$l->cantidad;
+            $stock->save();
+            $l->save();
+            }
         $compra->forceDelete();
-        flash("Se elimino Compra de  " . $compra->proveedor->nombre . " correctamente!")->error();
+        flash("Se elimino Compra de  " . $compra->proveedor->nombre . " correctamente y se actualizo el stok!")->error();
         return redirect(route('proveedor.index'));
     }
 }
