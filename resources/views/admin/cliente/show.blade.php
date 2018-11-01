@@ -4,7 +4,7 @@
 @section('venta','active')
 <div class="panel-heading"><h3><p>Clinete: <h2>{{$cliente->nombre}}{{$cliente->apellido}} </h2></p></h3></div>
 <a href="{{route('admin.ventaCC.create',$cliente->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Venta</span></a>
-<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Concepto</span></a>
+
 <div class="panel-body">
     <div class="col-xs-12">
             <div class="table-responsive">
@@ -27,7 +27,8 @@
                     <a href="{{route('admin.cliente.view',$lv->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Detalles</span></a>
                     <a href="{{route('admin.ventaCC.viewCC',$cliente->cuenta_corriente->id)}}" class="btn btn-primary" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Saldo CC</span></a>
                     <a href="{{route('admin.pago.show',$cliente->id)}}" class="btn btn-primary" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Pago CC</span></a>
-                    </td>
+                    <a href="" class="btn btn-success"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a>  
+                  </td>
                  </tr>
                   @endforeach
             

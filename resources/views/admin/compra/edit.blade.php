@@ -12,8 +12,11 @@
                     <h3>{!! Form::label('proveedor',$compra->proveedor->nombre,['class'=>'col-lg-1 control-label']) !!}</h3>
                 </div>
                 <div class="col-lg-2">
-                    {!! Form::text('idp',$compra->proveedor->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                    {!! Form::text('id',$compra->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
                 </div>
+                <div class="col-lg-2">
+                                {!! Form::text('idp',$compra->proveedor->id,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                            </div>
                 <div class="col-lg-2">
                         <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  
                       </div>

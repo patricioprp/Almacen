@@ -12,6 +12,7 @@
                         <div class="table-responsive">
                           <table class="table table-bordered table-condensed table-striped table-responsive table-hover">
                             <thead>
+                              <th>#</th>
                               <th>FECHA</th>
                               <th>MONTO</th>
                               <th>VENDEDOR</th>
@@ -20,6 +21,7 @@
                             <tbody>
                         @foreach ($proveedor->compras as $compra)
                                  <tr>  
+                                 <td>{{$compra->id}}</td>   
                                 <td>{{\Carbon\Carbon::parse($compra->fecha)->format('d-m-Y')}}</td>
                                 <td>${{$compra->monto}}</td>
                                 <td>{{$compra->user->name}}</td>

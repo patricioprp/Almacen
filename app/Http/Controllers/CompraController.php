@@ -116,22 +116,41 @@ class CompraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
        $user = Auth::user();
        $compra = Compra::find($id);
+       //actualizando el stock de cada producto que participo de la compra
+        foreach($compra->lineaCompra as $l){
+            $prod=Producto::find($l->producto_id);
+            $stock =Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad-$l->cantidad;
+            $stock->save();
+            $l->save();
+            }
+       $compra->lineaCompra()->forceDelete();
+       //Partir de aqui la logica es la misma de cuando se guarda una compra
        $compra->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
        $compra->monto = 0 ;
        $compra->user_id = $user->id;
+       $proveedor = Proveedor::find($request->idp);
+       $proveedor->compras()->save($compra);
        foreach ($request->productos as $idx=> $producto){
         $prod = Producto::find($producto);
-        $lc = Linea_compra::find($compra->lineaCompra[$idx]); 
-        $lc[0]->subTotal = $prod->precio_costo*$request->cantidad[$idx];
-        $lc[0]->producto_id = $prod->id;
-        $lc[0]->compra_id = $compra->id;
-        $compra->lineaCompra()->save($lc[0]);
-        $compra->monto = $compra->monto + $lc[0]->subTotal;
-        $compra->save();
+        $lc = new Linea_compra(); 
+        $lc->cantidad = $request->cantidad[$idx];
+        $lc->subTotal = $prod->precio_costo*$request->cantidad[$idx];
+        $lc->producto_id = $prod->id;
+        $lc->compra_id = $compra->id;
+        $stock=Stock::find($prod->stock_id);
+        $stock->cantidad = $stock->cantidad+$request->cantidad[$idx];
+        $stock->save();
+        $lc->save();
        }
+       foreach($compra->lineaCompra as $l){
+        $compra->monto = $compra->monto + $l->subTotal;        
+        $compra->proveedor_id = $proveedor->id;   
+        $compra->lineaCompra()->save($l);
+        }
+        $compra->save();
        flash("Se edito la Compra a de Proveedor: " . $compra->proveedor->nombre. " correctamente!")->success();
        return redirect(route('proveedor.index'));
     }
