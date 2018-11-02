@@ -72,14 +72,12 @@
                             {!! Form::text('unidades[]',$l->unidad,['class' => 'form-control','id'=>'unidades', 'placeholder'=>'Unidades','required']) !!}
                     </div>
                     <div class="col-lg-2">
-                            <a class="btn btn-danger" href="" id="remInput"><span class="glyphicon glyphicon-minus" aria-hidden="true">Eliminar Concepto</span>
-                                    </a>
+                            <a class="btn btn-danger" href="" id="remInput"><span class="glyphicon glyphicon-minus" aria-hidden="true">Eliminar Concepto</span></a>
                     </div>
                     <div class="col-lg-2">
                             <a class="btn btn-primary" href="" id="addInput">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Concepto</span>
-                             </a> 
-                         </div>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Concepto</span></a> 
+                    </div>
                     
                 </div>
             </div>
