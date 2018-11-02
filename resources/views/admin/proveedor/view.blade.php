@@ -31,6 +31,10 @@
       </tbody>
     </table>
     <p><h3>Importe Total: ${{$compra->monto}}</h3><p> 
-
     </div>
+    <p>
+        <a href="{{ route('compra.pdf',$compra->id)}}" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-save" aria-hidden="true">     Factura (PDF)</span>
+        </a>
+    </p>
 @endsection

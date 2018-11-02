@@ -50,7 +50,7 @@
   </div>
   <p>
     <a href="{{ route('productos.pdf')}}" class="btn btn-sm btn-primary">
-        <span class="glyphicon glyphicon-save" aria-hidden="true">     RECIBO (PDF)</span>
+        <span class="glyphicon glyphicon-save" aria-hidden="true">     Listado (PDF)</span>
     </a>
 </p>
 {!! $productos->render() !!}

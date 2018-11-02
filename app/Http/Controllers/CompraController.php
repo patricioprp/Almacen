@@ -11,6 +11,7 @@ use App\Linea_compra;
 use App\User;
 use App\Stock;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class CompraController extends Controller
@@ -175,5 +176,13 @@ class CompraController extends Controller
         $compra->forceDelete();
         flash("Se elimino Compra de  " . $compra->proveedor->nombre . " correctamente y se actualizo el stok!")->error();
         return redirect(route('proveedor.index'));
+    }
+    public function pdf($id)
+    {
+       $compra = Compra::find($id);
+
+       $pdf = PDF::loadView('pdf.compra', compact('compra'));
+
+       return $pdf->download('Factura de Compra.pdf');
     }
 }
