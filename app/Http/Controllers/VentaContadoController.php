@@ -7,6 +7,7 @@ use App\Venta;
 use App\User;
 use App\Cliente;
 use App\Linea_venta;
+use App\Stock;
 
 use Illuminate\Http\Request;
 
@@ -62,6 +63,9 @@ class VentaContadoController extends Controller
             $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
             $lv->producto_id = $prod->id;
             $lv->venta_id = $venta->id;
+            $stock=Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
+            $stock->save();
             $lv->save();
         }
         foreach($venta->lineaVentas as $l){
@@ -113,23 +117,40 @@ class VentaContadoController extends Controller
     {
         //dd($request->all());
         $user = Auth::user();
-        $venta = venta::find($id);
+        $v = venta::find($id);
+        foreach($v->lineaVentas as $lv){
+            $prod=Producto::find($lv->producto_id);
+            $stock =Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad+$lv->cantidad;
+            $stock->save();
+            $lv->save();
+            }
+        $v->forceDelete();
+        $venta = new Venta($request->all());
         $venta->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
         $venta->monto = 0 ;
         $venta->user_id = $user->id;
-        $venta->cliente_id = 10;
-        $venta->lineaVentas()->forceDelete();
+        $cliente=Cliente::find(15);
+        $venta->cliente_id = $cliente->id;//se le asigna el cliente generico
+        $cliente->ventas()->save($venta);
         foreach ($request->productos as $idx=> $producto){
             $prod = Producto::find($producto);
-            $lv = Linea_venta::find($venta->lineaVentas[$idx]); 
-            $lv[0]->subTotal = $prod->precio_venta*$request->cantidad[$idx];
-            $lv[0]->producto_id = $prod->id;
-            $lv[0]->venta_id = $venta->id;
-            $venta->lineaVentas()->save($lv[0]);
-            $venta->monto = $venta->monto + $lv[0]->subTotal;
-            $venta->save();
+            $lv = new Linea_venta(); 
+            $lv->cantidad = $request->cantidad[$idx];
+            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+            $lv->producto_id = $prod->id;
+            $lv->venta_id = $venta->id;
+            $stock=Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
+            $stock->save();
+            $lv->save();
            }
-           flash("Se edito la Venta del Empleado: " . $venta->user->name. " correctamente!")->success();
+           foreach($venta->lineaVentas as $lv){
+            $venta->monto = $venta->monto + $lv->subTotal;         
+            $venta->lineaVentas()->save($lv);
+            }
+            $venta->save();
+           flash("Se edito la Venta del Empleado: " . $venta->user->name. " y se actualizo el stock correctamente!")->success();
            return redirect(route('ventaContado.index'));
     }
 
@@ -142,6 +163,15 @@ class VentaContadoController extends Controller
     public function destroy($id)
     {
         $venta = Venta::find($id);
+
+        foreach($venta->lineaVentas as $l){
+            $prod=Producto::find($l->producto_id);
+            $stock =Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad+$l->cantidad;
+            $stock->save();
+            $l->save();
+            }
+
         $venta->forceDelete();
        flash("Se elimino la Venta del Empleado:  " . $venta->user->name . " correctamente!")->error();
         return redirect(route('ventaContado.index'));

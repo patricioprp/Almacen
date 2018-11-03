@@ -150,7 +150,7 @@ class CompraController extends Controller
        foreach($compra->lineaCompra as $l){
         $compra->monto = $compra->monto + $l->subTotal;        
         $compra->proveedor_id = $proveedor->id;   
-        $compra->lineaCompra()->save($l);
+        $compra->lineaCompra()->save($l); 
         }
         $compra->save();
        flash("Se edito la Compra a de Proveedor: " . $compra->proveedor->nombre. " correctamente!")->success();
