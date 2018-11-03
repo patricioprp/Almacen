@@ -29,5 +29,10 @@
                 <h3>IMPORTE TOTAL: ${{$venta->monto}}</h3>
                   </div>
                   </div>   
+                  <p>
+                      <a href="{{ route('ventaContado.pdf',$venta->id)}}" class="btn btn-sm btn-primary">
+                          <span class="glyphicon glyphicon-save" aria-hidden="true">    Factura (PDF)</span>
+                      </a>
+                  </p>
 </div>
 @endsection

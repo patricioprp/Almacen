@@ -54,6 +54,6 @@
       </table>
       </div>
       </div>
-      <p></p>
+
     {!! $proveedores->render() !!}
 @endsection

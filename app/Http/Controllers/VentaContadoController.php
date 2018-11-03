@@ -8,6 +8,7 @@ use App\User;
 use App\Cliente;
 use App\Linea_venta;
 use App\Stock;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use Illuminate\Http\Request;
 
@@ -175,6 +176,13 @@ class VentaContadoController extends Controller
         $venta->forceDelete();
        flash("Se elimino la Venta del Empleado:  " . $venta->user->name . " correctamente!")->error();
         return redirect(route('ventaContado.index'));
+    }
+    public function pdf($id)
+    {
+    $venta = Venta::find($id);
+    $pdf = PDF::loadView('pdf.ventaContado', compact('venta'));
+
+    return $pdf->download('Recibo de Ventas.pdf');
     }
 }
  

@@ -179,3 +179,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('descargar-liquidacion/{id}', 'UserController@pdf')->name('liquidaciones.pdf');
 Route::get('descargar-productos', 'ProductoController@pdf')->name('productos.pdf');
 Route::get('descargar-compra/{id}', 'CompraController@pdf')->name('compra.pdf');
+Route::get('descargar-ventaContado/{id}', 'VentaContadoController@pdf')->name('ventaContado.pdf');
