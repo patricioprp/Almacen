@@ -130,42 +130,54 @@ class VentaContadoController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        $user = Auth::user();
-        $v = venta::find($id);
-        foreach($v->lineaVentas as $lv){
-            $prod=Producto::find($lv->producto_id);
-            $stock =Stock::find($prod->stock_id);
-            $stock->cantidad = $stock->cantidad+$lv->cantidad;
-            $stock->save();
-            $lv->save();
-            }
-        $v->forceDelete();
-        $venta = new Venta($request->all());
-        $venta->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
-        $venta->monto = 0 ;
-        $venta->user_id = $user->id;
-        $cliente=Cliente::find(15);
-        $venta->cliente_id = $cliente->id;//se le asigna el cliente generico
-        $cliente->ventas()->save($venta);
+
         foreach ($request->productos as $idx=> $producto){
             $prod = Producto::find($producto);
-            $lv = new Linea_venta(); 
-            $lv->cantidad = $request->cantidad[$idx];
-            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
-            $lv->producto_id = $prod->id;
-            $lv->venta_id = $venta->id;
             $stock=Stock::find($prod->stock_id);
-            $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
-            $stock->save();
-            $lv->save();
-           }
-           foreach($venta->lineaVentas as $lv){
-            $venta->monto = $venta->monto + $lv->subTotal;         
-            $venta->lineaVentas()->save($lv);
+            if($request->cantidad[$idx]<=$stock->cantidad){
+                $user = Auth::user();
+                $v = venta::find($id);
+                foreach($v->lineaVentas as $lv){
+                    $prod=Producto::find($lv->producto_id);
+                    $stock =Stock::find($prod->stock_id);
+                    $stock->cantidad = $stock->cantidad+$lv->cantidad;
+                    $stock->save();
+                    $lv->save();
+                    }
+                $v->forceDelete();
+                $venta = new Venta($request->all());
+                $venta->fecha = \Carbon\Carbon::parse($request->fecha)->format('Y-m-d');
+                $venta->monto = 0 ;
+                $venta->user_id = $user->id;
+                $cliente=Cliente::find(15);
+                $venta->cliente_id = $cliente->id;//se le asigna el cliente generico
+                $cliente->ventas()->save($venta);
+                foreach ($request->productos as $idx=> $producto){
+                    $prod = Producto::find($producto);
+                    $lv = new Linea_venta(); 
+                    $lv->cantidad = $request->cantidad[$idx];
+                    $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+                    $lv->producto_id = $prod->id;
+                    $lv->venta_id = $venta->id;
+                    $stock=Stock::find($prod->stock_id);
+                    $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
+                    $stock->save();
+                    $lv->save();
+                   }
+                   foreach($venta->lineaVentas as $lv){
+                    $venta->monto = $venta->monto + $lv->subTotal;         
+                    $venta->lineaVentas()->save($lv);
+                    }
+                    $venta->save();
+                   flash("Se edito la Venta del Empleado: " . $venta->user->name. " y se actualizo el stock correctamente!")->success();
+                   return redirect(route('ventaContado.index'));
             }
-            $venta->save();
-           flash("Se edito la Venta del Empleado: " . $venta->user->name. " y se actualizo el stock correctamente!")->success();
-           return redirect(route('ventaContado.index'));
+            else {
+                flash("Error: la cantidad del producto " . $prod->descripcion. " es superior a su stock existente, STOCK:".$stock->cantidad)->error();
+                return redirect(route('ventaContado.index'));
+            }
+        }
+;
     }
 
     /**
