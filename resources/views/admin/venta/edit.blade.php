@@ -30,6 +30,11 @@
                    <div class="col-lg-2">
                      {!! Form::text('cantidad[]',$l->cantidad,['class' => 'form-control','id'=>'Cantidad', 'placeholder'=>'Cantidad','required']) !!}
                      </div>
+                     <div class="col-lg-2">
+                                <a class="btn btn-primary" href="" id="addInput">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Producto</span>
+                                 </a> 
+                             </div>
                      <hr />
         </div>
                 </div> 
