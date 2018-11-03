@@ -58,25 +58,38 @@ class VentaContadoController extends Controller
         $user = User::find($request->idu);
         $user->ventas()->save($venta);
         foreach ($request->productos as $idx=> $producto){
-            $lv = new Linea_venta();
             $prod = Producto::find($producto);
-            $lv->cantidad = $request->cantidad[$idx];
-            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
-            $lv->producto_id = $prod->id;
-            $lv->venta_id = $venta->id;
             $stock=Stock::find($prod->stock_id);
-            $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
-            $stock->save();
-            $lv->save();
-        }
-        foreach($venta->lineaVentas as $l){
-            $venta->monto = $venta->monto + $l->subTotal;          
-            $venta->lineaventas()->save($l);
+            if($request->cantidad[$idx]<=$stock->cantidad){
+                foreach ($request->productos as $idx=> $producto){
+                    $lv = new Linea_venta();
+                    $prod = Producto::find($producto);
+                    $lv->cantidad = $request->cantidad[$idx];
+                    $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+                    $lv->producto_id = $prod->id;
+                    $lv->venta_id = $venta->id;
+                    $stock=Stock::find($prod->stock_id);
+                    $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
+                    $stock->save();
+                    $lv->save();
+                }
+                foreach($venta->lineaVentas as $l){
+                    $venta->monto = $venta->monto + $l->subTotal;          
+                    $venta->lineaventas()->save($l);
+                    }
+                    $venta->save();
+                   // dd($venta);
+                    flash("Se creo la Venta del Empleado: " . $venta->user->name. " correctamente y se actualizao la base de datos del producto!")->success();
+                    return redirect(route('ventaContado.index'));
             }
-            $venta->save();
-           // dd($venta);
-            flash("Se creo la Venta del Empleado: " . $venta->user->name. " correctamente!")->success();
-            return redirect(route('ventaContado.index'));
+            else {
+                $venta->forceDelete();
+                flash("Error: la cantidad del producto " . $prod->descripcion. " es superior a su stock existente, STOCK:".$stock->cantidad)->error();
+                return redirect(route('ventaContado.index'));
+            }
+
+        }
+
         
     }
 
