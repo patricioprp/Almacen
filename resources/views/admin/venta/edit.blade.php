@@ -31,10 +31,13 @@
                      {!! Form::text('cantidad[]',$l->cantidad,['class' => 'form-control','id'=>'Cantidad', 'placeholder'=>'Cantidad','required']) !!}
                      </div>
                      <div class="col-lg-2">
+                                <a class="btn btn-danger" href="" id="remInput"><span class="glyphicon glyphicon-minus" aria-hidden="true">Eliminar Concepto</span></a>
+                        </div>
+                     <div class="col-lg-2">
                                 <a class="btn btn-primary" href="" id="addInput">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Producto</span>
                                  </a> 
-                             </div>
+                    </div>
                      <hr />
         </div>
                 </div> 

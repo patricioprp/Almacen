@@ -4,6 +4,9 @@
 @section('proveedor','active')
 <h3><b>Modulo de Gestion de Proveedor</b></h3>
 <a href="{{ asset('admin/proveedor/create')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+<a href="{{ route('proveedores.pdf')}}" class="btn btn-sm btn-primary">
+    <span class="glyphicon glyphicon-save" aria-hidden="true">     Listado de Proveedores (PDF)</span>
+</a>
    {{-- Buscador de proveedor --}}
    {!! Form::open(['route' => 'proveedor.index', 'method' => 'GET', 'autocomplete' => 'off',
    'class' => 'navbar-form pull-right', 'id' => 'formSearch']) !!}
@@ -54,6 +57,6 @@
       </table>
       </div>
       </div>
-
+<p></p>
     {!! $proveedores->render() !!}
 @endsection

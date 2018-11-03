@@ -180,3 +180,4 @@ Route::get('descargar-liquidacion/{id}', 'UserController@pdf')->name('liquidacio
 Route::get('descargar-productos', 'ProductoController@pdf')->name('productos.pdf');
 Route::get('descargar-compra/{id}', 'CompraController@pdf')->name('compra.pdf');
 Route::get('descargar-ventaContado/{id}', 'VentaContadoController@pdf')->name('ventaContado.pdf');
+Route::get('descargar-proveedores', 'ProveedorController@pdf')->name('proveedores.pdf');

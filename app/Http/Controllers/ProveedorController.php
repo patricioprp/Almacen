@@ -8,6 +8,7 @@ use App\Location;
 use App\Domicilio;
 use App\Compra;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class ProveedorController extends Controller
@@ -129,5 +130,14 @@ class ProveedorController extends Controller
         $proveedor->forceDelete();
        flash("Se elimino el Proveedor " . $proveedor->nombre . " correctamente!")->error();
         return redirect(route('proveedor.index'));
+    }
+
+    public function pdf()
+    {
+        $proveedores = Proveedor::all(); 
+
+        $pdf = PDF::loadView('pdf.proveedores', compact('proveedores'));
+
+        return $pdf->download('Listado de Proveedores.pdf');
     }
 }
