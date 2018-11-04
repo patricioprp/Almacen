@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Venta;
 use App\User;
 use App\Linea_venta;
+use App\Stock;
 
 use Illuminate\Http\Request;
 
@@ -57,22 +58,38 @@ class VentaCuentaCorrienteController extends Controller
         $user = User::find($user->id);
         $user->ventas()->save($venta);
         foreach ($request->productos as $idx=> $producto){
-            $lv = new Linea_venta();
             $prod = Producto::find($producto);
-            $lv->cantidad = $request->cantidad[$idx];
-            $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
-            $lv->producto_id = $prod->id;
-            $lv->venta_id = $venta->id;
-            $lv->save();
-        }
-        foreach($venta->lineaVentas as $l){
-            $venta->monto = $venta->monto + $l->subTotal;          
-            $venta->lineaventas()->save($l);
+            $stock=Stock::find($prod->stock_id);
+            if($request->cantidad[$idx]<=$stock->cantidad){
+                foreach ($request->productos as $idx=> $producto){
+                    $lv = new Linea_venta();
+                    $prod = Producto::find($producto);
+                    $lv->cantidad = $request->cantidad[$idx];
+                    $lv->subTotal = $prod->precio_venta*$request->cantidad[$idx];
+                    $lv->producto_id = $prod->id;
+                    $lv->venta_id = $venta->id;
+                    $stock=Stock::find($prod->stock_id);
+                    $stock->cantidad = $stock->cantidad-$request->cantidad[$idx];
+                    $stock->save();
+                    $lv->save();
+                }
+                foreach($venta->lineaVentas as $l){
+                    $venta->monto = $venta->monto + $l->subTotal;          
+                    $venta->lineaventas()->save($l);
+                    }
+                    $venta->save();
+                   // dd($venta);
+                    flash("Se creo la Venta del Empleado: " . $venta->user->name. " correctamente y se actualizao la base de datos del producto!")->success();
+                    return redirect(route('ventaContado.index'));
             }
-            $venta->save();
-           // dd($venta);
-            flash("Se creo la Venta del CLiente: " . $venta->cliente->nombre. " correctamente!")->success();
-            return redirect(route('cliente.index'));
+            else {
+                $venta->forceDelete();
+                flash("Error: la cantidad del producto " . $prod->descripcion. " es superior a su stock existente, STOCK:".$stock->cantidad)->error();
+                return redirect(route('ventaContado.index'));
+            }
+
+        }
+
     }
 
     /**
@@ -131,8 +148,17 @@ class VentaCuentaCorrienteController extends Controller
     public function destroy($id)
     {
         $venta = Venta::find($id);
+
+        foreach($venta->lineaVentas as $l){
+            $prod=Producto::find($l->producto_id);
+            $stock =Stock::find($prod->stock_id);
+            $stock->cantidad = $stock->cantidad+$l->cantidad;
+            $stock->save();
+            $l->save();
+            }
+
         $venta->forceDelete();
-       flash("Se elimino la Venta del Empleado:  " . $venta->cliente->nombre . " correctamente!")->error();
-        return redirect(route('cliente.index'));
+       flash("Se elimino la Venta del Empleado:  " . $venta->user->name . " correctamente!")->error();
+        return redirect(route('ventaContado.index'));
     }
 }
