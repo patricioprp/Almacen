@@ -7,6 +7,7 @@ use App\Province;
 use App\Location;
 use App\Domicilio;
 use App\Venta;
+use App\Pago_cc;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -71,9 +72,22 @@ class ClienteController extends Controller
     }
     public function view($id)
     {
-     $ventas = Venta::find($id);
+     $venta= Venta::find($id);
+     $pagos = Pago_cc::all();
+     foreach($pagos as $pago){
+        if($pago->venta_id==$venta->id){
+          $state="PAGADO";
+          return view('admin.cliente.view')
+          ->with('ventas',$venta)
+          ->with('state',$state);  
+        }           
+     }
+
+         $state="IMPAGO";
+   
      return view('admin.cliente.view')
-     ->with('ventas',$ventas);
+     ->with('ventas',$venta)
+     ->with('state',$state);  
     }
     public function viewCC($id)
     {

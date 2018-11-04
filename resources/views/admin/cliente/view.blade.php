@@ -3,6 +3,12 @@
 @section('content')
 @section('venta','active')
 <h2>Cliente: <span class="label label-success">{{$ventas->cliente->nombre}}-{{$ventas->cliente->apellido}}</span></h2>
+<h2>Estado: @if($state=="IMPAGO")
+  <span class="label label-danger">{{$state}}</span>
+  <a href="{{route('admin.pago.create',$ventas->id)}}" class="btn btn-primary">PAGAR</a>
+@else
+<span class="label label-primary">{{$state}}</span>
+@endif</h2>
 <h3>Vendedor: {{$ventas->user->name}}-{{$ventas->user->apellido}}</h3>
 <div class="table-responsive">
         <table class="table table-bordered table-condensed table-striped table-responsive table-hover">

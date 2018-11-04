@@ -25,7 +25,6 @@
       <th>NOMBRE</th>
       <th>APELLIDO</th>
       <th>DNI</th>
-      <th>ESTADO</th>
       <th>TELEFONO</th>
       <th>PAIS</th>
       <th>PROVINCIA</th>
@@ -42,11 +41,6 @@
            <td>{{$cliente->nombre}}</td>
            <td>{{$cliente->apellido}}</td>
            <td>{{$cliente->dni}}</td>
-            @if($cliente->estado == "activo")
-              <td><span class="label label-success">{{$cliente->estado}}</td></span>
-           @else
-             <td><span class="label label-danger">{{$cliente->estado}}</td></span>
-           @endif</td>
            <td>{{$cliente->telefono}}</td>
            <td>{{$cliente->domicilio->location->province->state->name}}</td>
            <td>{{$cliente->domicilio->location->province->name}}</td>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Cliente;
 use App\Pago_cc;
-
+use App\Venta;
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
@@ -24,10 +24,15 @@ class PagoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($id)
-    {
-        $cliente = Cliente::find($id);
-        return view('admin.pago.create')
-        ->with('cliente',$cliente);
+    { 
+     $pago = new Pago_cc();
+     $venta = Venta::find($id);
+     $pago->monto = $venta->monto;
+     $pago->fecha = \Carbon\Carbon::now()->format('Y-m-d');
+     $pago->venta_id = $venta->id;
+     $pago->save();
+
+     return redirect(route('cliente.index'));
     }
 
     /**
