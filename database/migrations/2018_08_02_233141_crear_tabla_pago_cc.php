@@ -17,8 +17,8 @@ class CrearTablaPagoCc extends Migration
             $table->increments('id');
             $table->double('monto',8,2);
             $table->date('fecha');
-            $table->integer('cliente_id')->unsigned();
-            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+            $table->integer('venta_id')->unsigned();
+            $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
             $table->timestamps();
         });
     }

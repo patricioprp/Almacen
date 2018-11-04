@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pago_cc extends Model
 {
     protected $table = 'pago_ccs';
-    protected $fillable = ['id','monto','fecha','cliente_id'];
+    protected $fillable = ['id','monto','fecha','venta_id'];
 
     public function venta(){
         return $this->belongsTo('\App\Venta');

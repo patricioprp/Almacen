@@ -17,7 +17,7 @@ class Pago_ccseeder extends Seeder
            'monto'  => $faker->randomElement(['1','20','43','29',
            '32','94','20','99']),
            'fecha' => date('Y-m-d'),
-           'cliente_id' => $i,
+           'venta_id' => $i,
            'created_at' => date('Y-m-d H:m:s'),
            'updated_at' => date('Y-m-d H:m:s')
     ));
