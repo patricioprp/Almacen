@@ -107,6 +107,7 @@ class UserController extends Controller
     { 
         $user=User::find($id);
         $user->fill($request->all());
+        $user->password = bcrypt($request->password);
         $user->save();
         $domicilio = Domicilio::find($request->domicilio);
         $domicilio->calle = $request->calle;

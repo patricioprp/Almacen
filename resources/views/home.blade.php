@@ -201,6 +201,15 @@
                                     </div>
                                   </div>
                             </div>
+                            <div class="col-sm-12 col-md-2">
+                                <div class="card mb-4 bg-warning text-white">
+                                    <div class="card-body text-center">
+                                      <h5 class="card-title">PROVEEDOR</h5>
+                                      <p class="card-text"></p>
+                                      <a href="{{ asset('admin/proveedor')}}"><img src="{{ asset('images/proveedor')}}" class="img-thumbnail rounded-circle" alt=""></a>
+                                    </div>
+                                  </div>
+                            </div>
         </div>
         <div class="panel-footer text-center"><a href="{{asset('/')}}"><img src="{{asset('images/marca_tucuman.png')}}" srcset="{{asset('images/marca_tucuman.png')}} 2x" width="60"></a> Tucuman Tecnologias © {{date("Y")}} | Todos los derechos reservados </div>          
            

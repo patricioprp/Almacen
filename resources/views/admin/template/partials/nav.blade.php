@@ -22,6 +22,7 @@
            <li class="@yield('usuario')"><a href="{{ asset('admin/user')}}"><b>Gestion de Empleado</b></a></li>
            @elseif (Auth::user()->type=='member')
            <li class="@yield('venta')"><a href="{{ asset('admin/ventaContado')}}"><b>Gestionar Venta</b></a></li>
+           <li class="@yield('proveedor')"><a href="{{ asset('admin/proveedor')}}"><b>Gestionar Proveedor</b></a></li>
            <li class="@yield('cliente')"><a href="{{ asset('admin/cliente')}}"><b>Gestionar Cliente</b></a></li>
            @endif
          </ul>
