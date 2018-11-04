@@ -16,15 +16,15 @@
                   <th>ACCION</th>
                 </thead>
                 <tbody>
-            @foreach ($cliente->ventas as $lv)
+            @foreach ($cliente->ventas as $v)
                      <tr>  
-                    <td>{{$lv->id}}</td>
-                    <td>{{\Carbon\Carbon::parse($lv->fecha)->format('d-m-Y')}}</td>
-                    <td>${{$lv->monto}}</td>
+                    <td>{{$v->id}}</td>
+                    <td>{{\Carbon\Carbon::parse($v->fecha)->format('d-m-Y')}}</td>
+                    <td>${{$v->monto}}</td>
                     <td>
-                      <a href="{{route('ventaCC.edit',$lv->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                      <a href="{{route('admin.ventaCC.destroy',$lv->id)}}" onclick="return confirm('Desea eliminar La Liquidacion?')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                    <a href="{{route('admin.cliente.view',$lv->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Detalles</span></a>
+                      <a href="{{route('ventaCC.edit',$v->id)}}" class="btn btn-warning" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                      <a href="{{route('admin.ventaCC.destroy',$v->id)}}" onclick="return confirm('Desea eliminar La Liquidacion?')" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <a href="{{route('admin.cliente.view',$v->id)}}" class="btn btn-success" title="Ver"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Ver Detalles</span></a>
                     
                   </td>
                  </tr>

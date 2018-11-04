@@ -3,9 +3,12 @@
 @section('content')
 <h2>Editar Venta de {{$venta->cliente->nombre}} {{$venta->cliente->apellido}}</h2>
 @section('venta','active')
-{!! Form::open(['route' => ['ventaContado.update',$venta],'method'=>'PUT']) !!}
+{!! Form::open(['route' => ['ventaCC.update',$venta],'method'=>'PUT']) !!}
 <div class="form-group">
 <div class="row">
+                <div class="col-lg-2">
+                                {!! Form::text('cli',$cli,['class' => 'form-control hidden', 'placeholder'=>'dd-mm-aaaa','required']) !!}
+                        </div>
         <div class="col-lg-2">
                 <h3>{!! Form::label('fecha','Fecha',['class'=>'control-label']) !!} </h3>  
               </div>
@@ -30,6 +33,14 @@
                    <div class="col-lg-2">
                      {!! Form::text('cantidad[]',$l->cantidad,['class' => 'form-control','id'=>'Cantidad', 'placeholder'=>'Cantidad','required']) !!}
                      </div>
+                     <div class="col-lg-2">
+                                <a class="btn btn-danger" href="" id="remInput"><span class="glyphicon glyphicon-minus" aria-hidden="true">Eliminar Concepto</span></a>
+                        </div>
+                     <div class="col-lg-2">
+                                <a class="btn btn-primary" href="" id="addInput">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Producto</span>
+                                 </a> 
+                    </div>
                      <hr />
         </div>
                 </div> 
