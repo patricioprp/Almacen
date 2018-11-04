@@ -6,8 +6,14 @@
 <h2>Estado: @if($state=="IMPAGO")
   <span class="label label-danger">{{$state}}</span>
   <a href="{{route('admin.pago.create',$ventas->id)}}" class="btn btn-primary">PAGAR</a>
+  <a href="{{ route('ventaCC.pdf',['id'=>$ventas->id,'state'=>$state])}}" class="btn btn-sm btn-primary">
+      <span class="glyphicon glyphicon-save" aria-hidden="true">    Factura (PDF)</span>
+  </a>
 @else
 <span class="label label-primary">{{$state}}</span>
+<a href="{{ route('ventaCC.pdf',['id'=>$ventas->id,'state'=>$state])}}" class="btn btn-sm btn-primary">
+    <span class="glyphicon glyphicon-save" aria-hidden="true">    Factura (PDF)</span>
+</a>
 @endif</h2>
 <h3>Vendedor: {{$ventas->user->name}}-{{$ventas->user->apellido}}</h3>
 <div class="table-responsive">
